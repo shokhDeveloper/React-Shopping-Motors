@@ -1,0 +1,79 @@
+@use "../../Settings/scss/varieble";
+@use "../../Settings/scss/functions";
+#main{
+    width: 100%;
+    height: auto;
+    padding-top: 12rem;
+}
+.hero__items{
+    width: 100%;
+    display: grid;
+    grid-template: repeat(1, 400px) / repeat(2, 70% 30%);
+    justify-content: space-between;
+}
+.hero_items__swiper{
+    width: 100%;
+}
+.swiper-slide img{
+    width: 100%;
+    border-radius: 10px;
+}
+.hero_aksiya{
+    width: 100%;
+    @include functions.flex(flex-end);
+    align-items: stretch;
+}
+.hero__card{
+    position: relative;
+    width: 80%;
+    border: 1px solid varieble.$before_text;
+}
+.hero__card .card__header{
+    text-align: center;
+    width: 100%;
+    @include  functions.flex(space-between);
+    align-items: flex-start;
+}
+.hero__card .card__header .aksiya{
+    background: varieble.$blue ;
+    padding: 0.5rem;    
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.hero__card .card__header .before_price{
+    color: varieble.$before_text;
+    font-size: 16px;
+}
+.hero__card .card__header .card_header__text{
+    padding-right: 0.5rem;
+}
+.card__header .price{
+    font-size: 27px;
+    color: varieble.$blue;
+}
+.hero__card .card__body{
+    padding: 1rem;
+    text-align: center;
+    width: 100%;
+    color: varieble.$card_text_color;
+}
+.card_body__name{
+    display: block;
+}
+.hero__card .card_footer{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    padding: 1rem;
+}
+.hero__card .card_footer h4:nth-child(1){
+    padding-bottom: 0.5rem;
+    color: varieble.$card_text_color;
+    font-size: 18px;
+}
+.hero__card .card_footer h4:nth-child(2){
+    color: varieble.$blue;
+    font-size: 20px;
+}

@@ -1,0 +1,82 @@
+@use "../Settings/scss/functions";
+#main{
+    padding-top: 7rem;
+}
+.public__default{
+    width: 100%;
+}
+.default__items{
+    display: grid;
+    grid-template: repeat(1, auto) / repeat(2, 50% 50%);
+    justify-content: space-between;
+}
+.items__swiper{
+    width: 100%;
+
+    text-align: center;
+}   
+.items__swiper img{
+    width: 70%;
+    margin: 0 auto;
+    object-fit: cover;    
+}
+.items__text{
+    @include functions.flex(flex-end);
+    align-items: stretch;
+}
+.item__card{
+    width: 70%;
+    padding: 1rem;
+}   
+.item__card h2{
+    width: 100%;
+}
+.items__links{
+    width: 100%;
+    display: grid;
+    grid-template: repeat(1, auto)  / repeat(2, 50% 50%);
+}
+.item__card p{
+    color: rgb(148, 143, 143);
+    font-size: 15px;    
+}
+.items_text__images{
+    width: 60%;
+    @include functions.flex(space-between);;
+}
+.item__template .item__page{
+    text-decoration: none;
+    color: rgba(128, 128, 128, 0.642);
+    padding-bottom: 0.5rem;
+}
+.item__template .active__page{
+    color: black;
+    font-weight: 700;
+    text-decoration: none;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid black;
+}
+.items_text__images{
+    padding: 1rem 0rem;
+}
+.item__template ul{
+    padding-top: 1rem;
+    list-style: none;
+}
+.item__template ul li{
+    padding: 0.5rem 0rem;
+}
+.item__card{
+    position: relative;
+}
+.pokazat{
+    font-size: 14px;
+    color: #1C62CD;
+}
+.kupit_btn{
+    margin-top: 1rem;
+    text-transform: uppercase;
+    font-weight: 300;
+    letter-spacing: 2px;
+    font-size: 14px;
+}  

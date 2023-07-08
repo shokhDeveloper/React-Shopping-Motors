@@ -1,0 +1,155 @@
+@use "../../../Settings/scss/functions";
+@use "../../../Settings/scss/varieble";
+.default_settings_links{
+    padding-top: 1rem;
+    margin-top: 3rem;
+}
+.default_settings_links_ul{
+    @include functions.flex(space-between);
+    @extend %list;
+}
+.default_settings_links_ul li .default_settings_links_page{
+    color: varieble.$card_text_color;
+    padding-bottom: 0.3rem;
+    border-bottom: 1px solid transparent;
+    text-decoration: none;
+}
+.default_settings_links_ul li .default_settings_links_active_page{
+    padding-bottom: 0.3rem;
+    border-bottom: 1px solid ;
+    text-decoration: none;
+    color: black;
+    border-bottom: 1px solid black;
+}
+.default_data{
+    width: 100%;
+    height: auto;
+    margin-top: 4rem;
+}
+.default_data__title{
+    width: 100%;
+    display: grid;
+    grid-template: repeat(1, auto) / repeat(4, 20%);
+}
+.default_data li:not(:first-child){
+    display: grid;
+    grid-template: repeat(1, auto) / repeat(5, 20%);
+    text-align: start;
+    padding-top: 1rem;
+}
+.default_data li:not(:first-child) button{
+    display: inline;
+}
+.default_data li:not(:first-child) p{
+    font-size: 17px;
+}
+.default_data li:nth-child(2){
+    padding-top: 3rem;
+}
+.default_data__title p{
+    letter-spacing: 1px;
+    font-size:18px;
+}
+.default_tovars_pokup{
+    margin-top: 2rem;
+}
+.default_tovars_links{
+    padding: 1rem 0rem;
+    @include functions.flex(space-between);
+    padding-top: 2rem;
+    width: 65%;
+    @extend %list;
+}
+.default_tovars_links li .default_tovars_link{
+    text-decoration: none;
+    color: black;
+    text-transform: uppercase;
+    font-weight: 600;
+    padding-bottom: 0.3rem;
+    border-bottom: 1px solid transparent;
+    font-size: 15px;
+}
+.default_tovars_links li .default_tovars_link_active{
+    text-decoration: none;
+    color: black;
+    font-size: 15px;
+    text-transform: uppercase;
+    font-weight: 600;
+    padding-bottom: 0.3rem;
+    border-bottom: 2px solid black;
+}
+.default_tovar{
+    padding: 0.5rem;
+    width: 25%;
+    border: 1px solid 
+    #E0E0E0;
+    position: relative;
+}   
+.default_tovar_header{
+    text-align: end;
+}
+.default_tovar_body{
+    text-align: center;
+}
+.default_tovar_header span{
+    background: varieble.$blue;
+    padding: 0.3rem 1rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: #fff;
+}
+.default_tovar_body h3{
+    color: varieble.$card_text_color;
+    // text-transform: uppercase;
+    padding: 0.5rem 0rem;
+    letter-spacing: 1px;
+    font-size: 20px;
+    padding-bottom: 1rem;
+}
+.default_tovar_body h4{
+    font-size: 19px;
+    padding-bottom: 0.8rem;
+}
+.default_tovar .kupit_btn{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    border-top-left-radius: 10px;
+}
+.default_tovars{
+    padding-top: 2rem;
+}
+footer{
+    margin-top: 3rem;
+    padding: 0.5rem 0rem;
+    background: #F0F0F4;
+    border-top: 1px solid rgba(0, 0, 0, 0.204);
+}
+.footer__items{
+    display: grid;
+    grid-template: repeat(1, auto)  / repeat(5, 1fr);
+    justify-content: center;
+    align-items: center;    
+    text-align: center;
+}
+.footer_item{
+    border: 1px solid red;
+}
+.footer_item:nth-child(1) h4{
+    font-size: 14px;
+}
+.footer_item:nth-child(1) form{
+    @include functions.flex(center);
+}
+.footer_item:nth-child(1) form input{
+    font-size: 14px;
+    transform: translate(0px,  5px);
+    padding: 0.5rem;
+}
+.footer_item:nth-child(1) form  button{
+    font-size: 11px;
+}
+.footer_item{
+    list-style: none;
+}

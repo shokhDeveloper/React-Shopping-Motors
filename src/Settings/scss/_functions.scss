@@ -1,0 +1,18 @@
+@mixin flex($content){
+    display: flex;
+    align-items: center;
+    justify-content: $content;
+}
+%list{
+    list-style: none;
+    text-decoration: none;
+}
+@function PaddingSum($y, $x){
+    $result: $y + $x;
+    @return $result;
+}
+@mixin media($max, $min){
+   @media only screen and (min-width: $min) and (max-width: $max){
+    @content
+   } 
+}

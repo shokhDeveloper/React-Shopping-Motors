@@ -1,0 +1,60 @@
+@use "../../Settings/scss/varieble";
+@use "../../Settings/scss/functions";
+header{
+    background: varieble.$oq;
+    padding: 0.5rem 0rem;
+    position: fixed;
+    width: 100%;
+    z-index: 4;
+}
+.header__items{
+    @include functions.flex(space-between);
+}
+.public__nav{
+    flex-basis: 30%;
+}
+.public_nav__ul{
+    @extend %list;
+    @include functions.flex(space-between);
+}
+.public_nav__ul li a{
+    text-decoration: none;
+    color: black;
+    font-weight: 600;
+}
+.header__adresss a{
+    text-decoration: none;
+    color: #000;
+    font-weight: 600;
+}
+.header__sign a{
+    font-weight: 600;
+    color: #000;
+    text-decoration: underline;
+    font-size: 20px;
+}
+.header__sign a span{
+    padding-left: 0.5rem;
+}
+.nav_bottom{
+    margin-top: 1rem;
+    padding: 0.5rem 0rem
+}
+.nav_bottom ul {
+    @include functions.flex(space-between);
+    @extend %list;
+}
+.nav_bottom ul li .page{
+    text-decoration: none;
+    color: #000;
+    font-size: 16px;
+    padding-bottom: 0.5rem ;
+    border-bottom: 2px solid transparent;
+}
+.active_page{
+    text-decoration: none;
+    color: #000;
+    font-size: 16px;
+    padding-bottom: 0.5rem ;
+    border-bottom: 2px solid varieble.$blue;
+}

@@ -1,23 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
-
+import { Home as PublicHome } from "./Public";
+import { Home } from "./Private";
+import { useContext } from "react";
+import { Context, GlobalStyle } from "./Settings";
+import { Navigate, Route, Routes } from "react-router-dom";
 function App() {
+  const { token } = useContext(Context);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Routes>
+        {token ? (
+          <>
+            <Route path="/" element={<Home />} />
+            <Route path="*" element={<Navigate to={<Home/>} replace={true}/>}/>
+          </>
+        ) : (
+          <>
+            <Route path="/*" element={<PublicHome />} />
+            <Route path="*" element={<Navigate to={<Home/>} replace={true}/>}/>
+          </>
+        )}
+      </Routes>
+      <GlobalStyle/>
     </div>
   );
 }
