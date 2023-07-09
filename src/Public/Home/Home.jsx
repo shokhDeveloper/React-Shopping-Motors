@@ -2,6 +2,7 @@ import "../Public.scss"
 import { Header, Loader } from "../../Components";
 import { useEffect, useState } from "react";
 import { RoutesX } from "../RoutesX";
+import { getItem, setItem } from "../../Settings";
 
 export const Home = () => {
   const [loader, setLoader] = useState({
@@ -9,6 +10,7 @@ export const Home = () => {
   })
   const handleLoader = () => {
     setLoader({apperence: false})
+    setItem("loader", true)
   }
   useEffect(() => {
     if(loader.apperence){
@@ -17,7 +19,7 @@ export const Home = () => {
   },[loader])
     return (
     <>
-      {loader.apperence ? (
+      {loader.apperence && getItem("loader") === null ? (
         <Loader/>
       ):(
         <>

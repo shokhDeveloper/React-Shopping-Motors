@@ -8,12 +8,13 @@ import { DefaultCarousel } from "./DefaultCarousel";
 import { Like } from "../../../Components/Like";
 import Chart_Img from "../../../Settings/assets/images/Chart_Img.png";
 import Zvezda from "../../../Settings/assets/images/Zvezda.png";
-import { NavLink, Route, Routes, useLocation } from "react-router-dom";
+import { NavLink, Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import { Xaracter, Magazin } from "../../../Components";
 import { Btn } from "../../../Settings";
 import { DefaultSettingsLinks } from "./Default_SettingsLinks";
 import { TovarPokup } from "./TovarPokup";
 import { DefaultFooter } from "./DefaultFooter";
+import { useSelector } from "react-redux";
 export const Default = () => {
   const [publicCarousel, setPublicCarousel] = useState([
     Car,
@@ -24,6 +25,8 @@ export const Default = () => {
   ]);
   const [like, setLike] = useState(false);
   const [state, setState] = useState("/Характеристики")
+  const {token} = useSelector((state) => state.Reducer)
+  const navigate = useNavigate()
   return (
     <>
     <section className="public__default">
@@ -66,7 +69,14 @@ export const Default = () => {
               </div>
                <div>
                 <a className="pokazat" href="#Показать-еще">Показать еще</a>
-                <Btn className="kupit_btn" style={{display: "block"}}>купить</Btn>
+                
+                <Btn className="kupit_btn" onClick={() => {
+                  if(token !== null){
+                    return true
+                  }else{
+                    navigate("/sign-in") 
+                  }
+                }} style={{display: "block"}}>купить</Btn>
                </div>
             </div>
           </div>

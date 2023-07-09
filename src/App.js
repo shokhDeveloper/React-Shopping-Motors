@@ -1,22 +1,25 @@
-import { Home as PublicHome } from "./Public";
+import { Home as PublicHome, SignIn, SignUp } from "./Public";
 import { Home } from "./Private";
 import { useContext } from "react";
 import { Context, GlobalStyle } from "./Settings";
 import { Navigate, Route, Routes } from "react-router-dom";
+import { useSelector } from "react-redux";
 function App() {
-  const { token } = useContext(Context);
+  const selector = useSelector((state) => state.Reducer)
   return (
     <div className="App">
       <Routes>
-        {token ? (
+        {selector?.token ? (
           <>
             <Route path="/" element={<Home />} />
-            <Route path="*" element={<Navigate to={<Home/>} replace={true}/>}/>
+            <Route path="*" element={<Navigate to={"/"} replace={true}/>}/>
           </>
         ) : (
           <>
             <Route path="/*" element={<PublicHome />} />
-            <Route path="*" element={<Navigate to={<Home/>} replace={true}/>}/>
+            <Route path="/sign-in" element={<SignIn/>}/>
+            <Route path="/sign-up" element={<SignUp/>}/>
+            <Route path="*" element={<Navigate to={"/"} replace={true}/>}/>
           </>
         )}
       </Routes>

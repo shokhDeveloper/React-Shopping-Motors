@@ -7,10 +7,17 @@ import Control1x from "../assets/images/control@1x.png";
 import Control2x from "../assets/images/control@2x.png";
 import Tovar1x from "../assets/images/Tovar@1x.png";
 import Tovar2x from "../assets/images/Tovar@2x.png";
+import { setItem } from "../Locals";
+const initialToken = window.localStorage.getItem("token_auto") || null;
+const initialUser = window.localStorage.getItem("user_auto")
+  ? JSON.parse(window.localStorage.getItem("user_auto"))
+  : null;
 export const slice = createSlice({
   name: "posts",
   initialState: {
     posts: [],
+    token: initialToken,
+    user: initialUser ,
     tovars: [
       {
         name: "BRP Audio-портативная система",
@@ -50,6 +57,18 @@ export const slice = createSlice({
     setPosts(state, action) {
       state.posts = action.payload;
     },
+    setToken(state, action){
+      state.token = action.payload
+    },
+    setUser(state, action){
+      try{
+        if(action.payload){
+          state.user = action.payload
+        }
+      }catch(error){
+        state.user = error
+      }
+    }
   },
 });
 export const Action = slice.actions;

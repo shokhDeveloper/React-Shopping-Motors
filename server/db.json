@@ -1,0 +1,49 @@
+{
+  "users": [
+    {
+      "email": "shohijahonmusinkulov@gmail.com",
+      "password": "$2a$10$sAgNZKOt8l3yh.kq0Eu8mOI/2c.aO/1wJ6Fnr3ejPnsLrsf/gQuXq",
+      "name": "Shohijahon",
+      "lastname": "Musinkulov",
+      "date": "09.07.2023, 17:13:14 Register-At its user",
+      "id": 1
+    },
+    {
+      "email": "leomessi@gmail.com",
+      "password": "$2a$10$ZQlMBM7XKhxcPZnERR/QueWj3FuobtjcIIDmCDV06KOKQJXYbXCwm",
+      "name": "leo",
+      "lastname": "Messi",
+      "date": "09.07.2023, 17:20:37 Register-At its user",
+      "id": 2
+    },
+    {
+      "email": "cristianoronaldo@gmail.com",
+      "password": "$2a$10$Y5oAQ.2f/Nf7ejDXS5sf/ur9b85Wjep4TKMKYCs2bw5f/XT1MAqay",
+      "name": "Cristiano",
+      "lastname": "Ronaldo",
+      "date": "09.07.2023, 17:22:14 Register-At its user",
+      "id": 3
+    },
+    {
+      "email": "pele@gmail.com",
+      "password": "$2a$10$XQ7Sk.p4rN4GtF4Nys5H9ePStp7JeQSPeHDG1FPJlk2sBeRPXvzly",
+      "name": "Pele",
+      "lastname": "Pele",
+      "date": "09.07.2023, 17:27:11 Register-At its user",
+      "id": 4
+    }
+  ],
+  "posts": [],
+  "admin": [
+    {
+      "name": "moto",
+      "id": 1,
+      "private": true
+    },
+    {
+      "name": "technicks",
+      "id": 2,
+      "private": true
+    }
+  ]
+}

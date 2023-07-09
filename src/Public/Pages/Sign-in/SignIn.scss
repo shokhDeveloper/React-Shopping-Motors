@@ -1,0 +1,27 @@
+@use "../../../Settings/scss/functions";
+.sign__in{
+    width: 100%;
+    min-height: 100vh;
+    @include functions.flex(center);
+}
+.sign__in .container{
+    width: 100%;
+    border: 1px solid black;
+}
+.sign_in__texts{
+    text-align: center;
+    padding-bottom: 3rem;
+}
+.sign_in__texts h2{
+    font-size: 40px;
+    padding-bottom: 1rem;
+}
+.sign__in  .sign_in__form{
+    width: 30%;
+    text-align: center;
+    margin: 0 auto;
+}
+.sign__in  .sign_in__form input{
+    width: 100%;
+    font-size: 20px;
+}

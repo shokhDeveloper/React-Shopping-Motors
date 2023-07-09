@@ -6,9 +6,10 @@ import { useContext, useEffect, useState } from "react";
 import { Context } from "../../Settings";
 import { HeartOutlined, ShoppingCartOutlined , UserOutlined, LoginOutlined} from "@ant-design/icons/lib/icons";
 import { NavBar } from "../Navbar";
+import { useSelector } from "react-redux";
 export const Header = () => {
-    const {token} = useContext(Context)
-    const [location, setLocation] = useState({
+  const {token} = useSelector(state => state.Reducer)  
+  const [location, setLocation] = useState({
         lat: null,
         long: null
     })

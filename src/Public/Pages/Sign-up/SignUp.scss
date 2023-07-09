@@ -1,0 +1,28 @@
+@use "../../../Settings/scss/functions";
+.sign__up{
+    width: 100%;
+    min-height: 100vh;
+    @include functions.flex(center);
+}
+ .container{
+    width: 100%;
+    border: 1px solid black;
+}
+.sign_up__texts{
+    text-align: center;
+    padding-bottom: 3rem;
+}
+.sign_up__texts h2{
+    font-size: 40px;
+    padding-bottom: 1rem;
+}
+.sign__up  .sign_up__form{
+    width: 30%;
+    text-align: center;
+    margin: 0 auto;
+    border: 1px solid black;
+}
+// .sign__up  .sign_up__form input{
+//     width: 100%;
+//     font-size: 20px;
+// }
