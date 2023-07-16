@@ -18,6 +18,19 @@ export const slice = createSlice({
     posts: [],
     token: initialToken,
     user: initialUser ,
+    loader: {
+      apperence: false
+    },
+    modalPassword: {
+      apperence: false
+    },
+    userFirebase:{
+      name: null,
+      lastname: null,
+      email: null,
+      password: null , // Foydalanuvchi kiritgan parol
+      uid: null,
+    },
     tovars: [
       {
         name: "BRP Audio-портативная система",
@@ -68,6 +81,18 @@ export const slice = createSlice({
       }catch(error){
         state.user = error
       }
+    },
+    setLoader(state){
+      state.loader.apperence = !state.loader.apperence
+    },
+    setPasswordModal(state){
+      state.modalPassword.apperence = !state.modalPassword.apperence
+    },
+    setFirebaseUser(state, action){
+      state.userFirebase = action.payload
+    },
+    setPasswordChange(state, action){
+      state.userFirebase.password = action.payload
     }
   },
 });

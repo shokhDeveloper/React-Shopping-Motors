@@ -1,3 +1,4 @@
+import GoogleImg from "../assets/images/Google.png";
 import { NavLink } from "react-router-dom";
 import { createGlobalStyle, styled } from "styled-components";
 export const GlobalStyle = createGlobalStyle`
@@ -47,7 +48,7 @@ export const Input = styled.input.attrs({
     &::placeholder{
         color: black;
     }
-`
+    `
 const LinkObject = {
     link_block : {
         display: "block"
@@ -56,6 +57,19 @@ const LinkObject = {
         display: "inherit"
     }
 }
+export const GoogleBtn = styled.button.attrs({
+        className: "btn__google"
+    })`
+        padding: 0.5rem 2rem ;
+        background: #fff;
+        border: 1px solid #00000026;
+        font-size: 16px;
+        padding-left:0.8rem;
+        letter-spacing:1px;
+        background-repeat: no-repeat;
+        background-position: calc(100%);
+        background-size: 20px;
+    `
 export const Link = styled(NavLink).attrs({
     className: "link border-transparent"
 })`

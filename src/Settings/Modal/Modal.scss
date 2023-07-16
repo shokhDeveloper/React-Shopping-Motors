@@ -1,0 +1,37 @@
+@use "../scss/functions";
+@use "../scss/varieble";
+.modal__overlay{
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+    @include functions.flex(center);
+    z-index: 999999;    
+
+}
+.modal{
+    background: #fff;
+    width: 30%;
+}
+.modal__header{
+    @include functions.flex(center);
+    position: relative;
+    background: varieble.$blue;
+    color: #fff;
+    padding: 1rem;
+}
+.modal__header button{
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: crimson;
+    padding: 0.2rem 0.5rem;
+    font-size: 20px;
+    color: #fff;
+}
+.modal__body{
+    padding: 0.5rem;
+    text-align: center;
+}

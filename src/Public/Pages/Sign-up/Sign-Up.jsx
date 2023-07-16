@@ -1,16 +1,20 @@
 import "./SignUp.scss";
 import Logo from "../../../Settings/assets/images/лого.svg";
-import { Input } from "../../../Components";
+import { Input, PassswordSign } from "../../../Components";
 import { useForm } from "react-hook-form";
 import * as Yup from "yup";
 import {yupResolver} from "@hookform/resolvers/yup";
-import { Btn, setItem } from "../../../Settings";
+import { Btn, GoogleBtn, Modal, setItem } from "../../../Settings";
 import axios from "axios";
 import { useMutation } from "react-query";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Action } from "../../../Settings/Redux/Settings";
+import GoogleImg from "../../../Settings/assets/images/Google.png"
+import { signInWithPopup } from "firebase/auth";
+import { auth, provider } from "../../../Settings/Firebase/firebaseconfig";
 export const SignUp = () => {
+  const selector = useSelector(state => state.Reducer)
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const date = new Date()
@@ -40,6 +44,7 @@ export const SignUp = () => {
                 setItem("user_auto", user)
                 setItem("token_auto", accessToken)
                 navigate("/")
+                window.localStorage.removeItem("loader")
             }
         }
     })
@@ -47,6 +52,22 @@ export const SignUp = () => {
   const handleSub = async (event) => {
     mutate({...event, date: `${date.toLocaleString()} Register-At its user` })
   };
+  const handleGoogle = () => {
+    
+    signInWithPopup(auth, provider).then(  (data) => {
+      const {user} =  data
+      if(user){
+          dispatch(Action.setPasswordModal())
+          dispatch(Action.setFirebaseUser({
+            name: user.displayName.split(" ")[0],
+            lastname: user.displayName.split(" ")[1],
+            email: user.email,
+            password: null,
+            uid: user.uid,
+          }))  
+      }
+    } )
+  }
   watch()
   return (
     <div className="sign__up">
@@ -60,11 +81,17 @@ export const SignUp = () => {
           <Input register={register} errors={errors} params={"email"} text={"Email"} password={false} key={"email"}/>
           <Input register={register} errors={errors} params={"password"} text={"password"} password={true} key={"password"}/>
           <div>
-
           <Btn disabled={!isValid} className="kupit_btn" type="submit">Submit</Btn>
           </div>
+
         </form>
+        <div className="google">
+          <GoogleBtn onClick={handleGoogle} style={{backgroundImage: `url(${GoogleImg})`}}>Google orqali kirish</GoogleBtn>
+        </div>
       </div>
+    <Modal title={"Parolingizni kiriting"} modal={selector.modalPassword.apperence} >
+      <PassswordSign params={"register"}/>
+    </Modal>
     </div>
   );
 };

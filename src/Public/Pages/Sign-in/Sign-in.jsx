@@ -1,15 +1,26 @@
 import "./SignIn.scss";
 import { useEffect, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import { Btn, LabelText, Link } from "../../../Settings";
+import { Btn, GoogleBtn, LabelText, Link, Modal, removeItem } from "../../../Settings";
 import { FormControl, IconButton, InputAdornment, InputLabel, OutlinedInput, TextField } from "@mui/material";
 import Logo from "../../../Settings/assets/images/лого.svg";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { useForm } from "react-hook-form";
 import {yupResolver} from "@hookform/resolvers/yup";
 import * as Yup from "yup";
+import { useMutation } from "react-query";
+import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { Action } from "../../../Settings/Redux/Settings";
+import GoogleImg from "../../../Settings/assets/images/Google.png"
+import {signInWithPopup} from "firebase/auth"
+import { auth, provider } from "../../../Settings/Firebase/firebaseconfig";
+import { PassswordSign } from "../../../Components";
 export const SignIn = () => {
+  const date = new Date()
   const navigate = useNavigate();
+  const selector = useSelector(state => state.Reducer)
+  const dispatch = useDispatch()
   const validationSchema = Yup.object({
     email: Yup.string().email("Email invalid").required("Email its required"),
     password: Yup.string().min(3, "Min 3" ).max(15, "Max 15").required("Password its required")   
@@ -40,8 +51,39 @@ export const SignIn = () => {
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
   };
+  const {mutate} = useMutation(data => {
+    axios.post(`${process.env.REACT_APP_SERVER}` + "/login", data).then(response => {
+      if(response.status === 200){
+        const {accessToken, user} = response.data
+        if(accessToken){
+            dispatch(Action.setToken(accessToken))
+            dispatch(Action.setUser(user))
+            navigate("/")
+            removeItem("loader")
+
+        } 
+      }
+    }).catch(error => {
+      console.log(error)
+    })
+  })
   const handleSub = (event) => {
-    console.log(event)
+    mutate({...event, date: `${date.toLocaleString()} Login its user`})
+  }
+  const handleGoogle = () => {
+      signInWithPopup(auth, provider).then(async (data) => {
+        const {user}  = data
+        if(user){
+          dispatch(Action.setPasswordModal())       
+          dispatch(Action.setFirebaseUser({
+            name: user.displayName.split(" ")[0],
+            lastname: user.displayName.split(" "[1]),
+            email: user.email,
+            password: null,
+            uid: user.uid
+          }))
+        }
+      })
   }
   watch()
   return (
@@ -84,9 +126,15 @@ export const SignIn = () => {
         </FormControl>
           </LabelText>
           <Btn className="kupit_btn">Yuborish</Btn>
+          <div className="google">
+          <GoogleBtn onClick={handleGoogle} style={{backgroundImage: `url(${GoogleImg})`}}> Google orqali kirish</GoogleBtn>
+          </div>
           <Link to={"/sign-up"} variant="link_block" >Sizda akkaunt yo'qmi ? </Link>
         </form>
       </div>
+      <Modal title={"Parolingizni kiriting"} modal={selector.modalPassword.apperence}>
+        <PassswordSign params={"login"}/>
+      </Modal>
     </div>
   );
 };
