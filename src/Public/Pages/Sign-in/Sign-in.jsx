@@ -16,6 +16,7 @@ import GoogleImg from "../../../Settings/assets/images/Google.png"
 import {signInWithPopup} from "firebase/auth"
 import { auth, provider } from "../../../Settings/Firebase/firebaseconfig";
 import { PassswordSign } from "../../../Components";
+import { Login } from "../../../Components/PasswordSign/Login";
 export const SignIn = () => {
   const date = new Date()
   const navigate = useNavigate();
@@ -77,7 +78,7 @@ export const SignIn = () => {
           dispatch(Action.setPasswordModal())       
           dispatch(Action.setFirebaseUser({
             name: user.displayName.split(" ")[0],
-            lastname: user.displayName.split(" "[1]),
+            lastname: user.displayName.split(" ")[1],
             email: user.email,
             password: null,
             uid: user.uid
@@ -133,7 +134,7 @@ export const SignIn = () => {
         </form>
       </div>
       <Modal title={"Parolingizni kiriting"} modal={selector.modalPassword.apperence}>
-        <PassswordSign params={"login"}/>
+        <Login/>
       </Modal>
     </div>
   );

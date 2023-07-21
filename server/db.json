@@ -1,13 +1,20 @@
 {
   "users": [
     {
+      "email": "ibragimbashatov2000@gmail.com",
+      "password": "$2a$10$EvOZb5/Yx0c8dAuVsnSpMu/BlS46aom58jXp3IG.MqWV8dP/Bhrc6",
+      "name": "Full",
+      "lastname": "Techno",
+      "uid": "SZJVB8buP2WFkoZgULe4ZQh4HuN2",
+      "id": 2
+    },
+    {
       "email": "shohijahonmusinkulov@gmail.com",
-      "password": "$2a$10$JKDde/8QK7ERIAxSY3G5K.VuqX5LZ3Fh83XljcOmWmwAUUW9U4kRG",
+      "password": "$2a$10$xCbZfOj0vVzbYir689d42eJ67k9hJ3/RqjfWrkQqPnguk2T5hmPOm",
       "name": "Shohijahon",
       "lastname": "Musinkulov",
       "uid": "6MAqF59FSIXkKmBszSXg6R7lysy1",
-      "date": "16.07.2023, 14:20:29 Register-At its user ",
-      "id": 1
+      "id": 3
     }
   ],
   "posts": [],

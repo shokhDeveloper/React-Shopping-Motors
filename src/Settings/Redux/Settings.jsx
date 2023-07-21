@@ -72,11 +72,13 @@ export const slice = createSlice({
     },
     setToken(state, action){
       state.token = action.payload
+      setItem("token_auto", state.token)
     },
-    setUser(state, action){
+      setUser(state, action){
       try{
         if(action.payload){
           state.user = action.payload
+          setItem("user_auto", state.user)
         }
       }catch(error){
         state.user = error

@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form"
 import { Input } from "../Input"
 import {yupResolver} from "@hookform/resolvers/yup"
 import * as Yup from "yup";
-import { Btn, setItem } from "../../Settings";
+import { Btn, removeItem, setItem } from "../../Settings";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { Action } from "../../Settings/Redux/Settings";
@@ -18,10 +18,10 @@ export const PassswordSign  = ({params}) => {
         axios.post(`${process.env.REACT_APP_SERVER}/${params}`, data).then(response => {
             const {accessToken, user} = response.data
             if(accessToken){
-                setItem("token_auto", accessToken)
-                setItem("user_auto",  user)
                 dispatch(Action.setToken(accessToken))
                 dispatch(Action.setUser(user))
+                dispatch(Action.setLoader())
+                removeItem("loader")
                 navigate("/")
             }else{
                 return false

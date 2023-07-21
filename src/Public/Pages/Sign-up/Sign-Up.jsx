@@ -13,6 +13,7 @@ import { Action } from "../../../Settings/Redux/Settings";
 import GoogleImg from "../../../Settings/assets/images/Google.png"
 import { signInWithPopup } from "firebase/auth";
 import { auth, provider } from "../../../Settings/Firebase/firebaseconfig";
+import { useEffect } from "react";
 export const SignUp = () => {
   const selector = useSelector(state => state.Reducer)
   const navigate = useNavigate()
@@ -68,6 +69,35 @@ export const SignUp = () => {
       }
     } )
   }
+  const validationSchemaPassword = Yup.object({
+    password: Yup.string().min(3, "Min 3").max(15, "Max 15").required("Password reduired")
+  })
+  const passwordForm = useForm({
+    defaultValues:{
+      password: ""
+    },
+    mode: "onChange",
+    resolver: yupResolver(validationSchemaPassword)
+  })
+  const onSubmit = async (event) => {
+    dispatch(Action.setPasswordChange(event.password))
+    
+  }
+  useEffect(() => {
+    if(selector.userFirebase.password){
+      ;(async function(){
+        const request = await axios.post(process.env.REACT_APP_SERVER+"/register", selector.userFirebase)
+        const response = await request.data
+        const {accessToken, user} = response
+        if(accessToken){
+        dispatch(Action.setToken(accessToken))
+        dispatch(Action.setUser(user))
+    }else{
+      return false
+    }
+      }())
+    }
+  },[selector.userFirebase.password])
   watch()
   return (
     <div className="sign__up">
@@ -83,14 +113,16 @@ export const SignUp = () => {
           <div>
           <Btn disabled={!isValid} className="kupit_btn" type="submit">Submit</Btn>
           </div>
-
-        </form>
         <div className="google">
-          <GoogleBtn onClick={handleGoogle} style={{backgroundImage: `url(${GoogleImg})`}}>Google orqali kirish</GoogleBtn>
+          <GoogleBtn type="button" onClick={handleGoogle} style={{backgroundImage: `url(${GoogleImg})`}}>Google orqali kirish</GoogleBtn>
         </div>
+        </form>
       </div>
     <Modal title={"Parolingizni kiriting"} modal={selector.modalPassword.apperence} >
-      <PassswordSign params={"register"}/>
+      <form onSubmit={passwordForm.handleSubmit(onSubmit)}>
+        <Input errors={passwordForm.formState.errors} params={"password"} password={true} register={passwordForm.register} text={"Password"}  />
+        <Btn className="kupit_btn" type="submit">Yuborish</Btn>
+      </form>
     </Modal>
     </div>
   );
