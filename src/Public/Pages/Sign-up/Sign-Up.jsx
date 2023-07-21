@@ -118,7 +118,7 @@ export const SignUp = () => {
         </div>
         </form>
       </div>
-    <Modal title={"Parolingizni kiriting"} modal={selector.modalPassword.apperence} >
+    <Modal error={false} title={"Parolingizni kiriting"} modal={selector.modalPassword.apperence} >
       <form onSubmit={passwordForm.handleSubmit(onSubmit)}>
         <Input errors={passwordForm.formState.errors} params={"password"} password={true} register={passwordForm.register} text={"Password"}  />
         <Btn className="kupit_btn" type="submit">Yuborish</Btn>

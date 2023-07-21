@@ -15,7 +15,7 @@ import { Action } from "../../../Settings/Redux/Settings";
 import GoogleImg from "../../../Settings/assets/images/Google.png"
 import {signInWithPopup} from "firebase/auth"
 import { auth, provider } from "../../../Settings/Firebase/firebaseconfig";
-import { PassswordSign } from "../../../Components";
+import { ErrorLogin, PassswordSign } from "../../../Components";
 import { Login } from "../../../Components/PasswordSign/Login";
 export const SignIn = () => {
   const date = new Date()
@@ -65,7 +65,11 @@ export const SignIn = () => {
         } 
       }
     }).catch(error => {
-      console.log(error)
+      if(error.response.status === 400){
+        dispatch(Action.setErrorModal(true))   
+      }else{
+        return {error: error.name}
+      }
     })
   })
   const handleSub = (event) => {
@@ -128,12 +132,15 @@ export const SignIn = () => {
           </LabelText>
           <Btn className="kupit_btn">Yuborish</Btn>
           <div className="google">
-          <GoogleBtn onClick={handleGoogle} style={{backgroundImage: `url(${GoogleImg})`}}> Google orqali kirish</GoogleBtn>
+          <GoogleBtn type="button" onClick={handleGoogle} style={{backgroundImage: `url(${GoogleImg})`}}> Google orqali kirish</GoogleBtn>
           </div>
           <Link to={"/sign-up"} variant="link_block" >Sizda akkaunt yo'qmi ? </Link>
         </form>
       </div>
-      <Modal title={"Parolingizni kiriting"} modal={selector.modalPassword.apperence}>
+      <Modal title={"Xatolik"} error={true} modal={selector.notLoginModalError.apperence}>
+        <ErrorLogin/>    
+      </Modal>
+      <Modal error={false} title={"Parolingizni kiriting"} modal={selector.modalPassword.apperence}>
         <Login/>
       </Modal>
     </div>

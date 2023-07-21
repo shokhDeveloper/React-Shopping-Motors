@@ -31,6 +31,10 @@ export const slice = createSlice({
       password: null , // Foydalanuvchi kiritgan parol
       uid: null,
     },
+    notLoginModalError:{
+      apperence: false
+    },
+    textErrorModal: "Bunday user mavjud emas",
     tovars: [
       {
         name: "BRP Audio-портативная система",
@@ -95,6 +99,9 @@ export const slice = createSlice({
     },
     setPasswordChange(state, action){
       state.userFirebase.password = action.payload
+    },
+    setErrorModal(state, action){
+      state.notLoginModalError.apperence = action.payload  
     }
   },
 });

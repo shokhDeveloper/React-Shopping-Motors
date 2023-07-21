@@ -8,6 +8,7 @@ import { Action } from "../../Settings/Redux/Settings";
 import { useMutation } from "react-query";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 export const Login = () => {
     const date = new Date()
     const selector = useSelector((state) => state.Reducer)
@@ -29,11 +30,8 @@ export const Login = () => {
             console.log(error)
         })
     })
-    
     const onSubmit = (event) => {
         dispatch(Action.setPasswordChange(event.password))
-        console.log(selector.userFirebase)
-        mutate({...selector.userFirebase, date: date.toLocaleString() })
     }
     const validationSchema = Yup.object({
       password: Yup.string().min(3, "Min 3").max(15, "Max 15").required("Password its required")  
@@ -45,11 +43,16 @@ export const Login = () => {
         mode: "onChange",
         resolver: yupResolver(validationSchema)
     })
+    useEffect(() => {
+        if(selector.userFirebase.password !== null){
+            mutate({...selector.userFirebase, date: date.toLocaleString() })
+        }
+    }, [selector.userFirebase])
     watch()
     return(
         <form onSubmit={handleSubmit(onSubmit)}>
             <Input params={"password"} errors={errors} password={true} register={register} text={"Password"}/>
-            <Btn className="kupit_btn">Yuborish</Btn>
+            <Btn className="kupit_btn" disabled={!isValid}>Yuborish</Btn>
         </form>
     )
 }
