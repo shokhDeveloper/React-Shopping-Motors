@@ -15,19 +15,35 @@
       "lastname": "Techno",
       "uid": "SZJVB8buP2WFkoZgULe4ZQh4HuN2",
       "id": 2
+    },
+    {
+      "email": "userAdmin@gmail.com",
+      "password": "$2a$10$QoAs8SEyZil6cRkGN4rzue8pFrZiKi65StT1hwbpXLzlIiV.9Cqqq",
+      "name": "Admin",
+      "lastname": "Admin",
+      "date": "26.07.2023, 16:03:05 Register-At its user",
+      "id": 3
+    },
+    {
+      "email": "admin@gmail.com",
+      "password": "$2a$10$DoOV1vlkqbkaotH5RlR0Cey.f72MCQIo5mVEcXz.0VNbwlEY0HYpu",
+      "name": "Admin",
+      "lastname": "Admin",
+      "date": "26.07.2023, 16:04:14 Register-At its user",
+      "id": 4
     }
   ],
   "posts": [],
   "admin": [
     {
       "name": "moto",
-      "id": 1,
-      "private": true
+      "private": true,
+      "id": 1
     },
     {
       "name": "technicks",
-      "id": 2,
-      "private": true
+      "private": true,
+      "id": 2
     }
   ]
 }

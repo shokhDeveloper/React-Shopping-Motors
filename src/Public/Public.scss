@@ -2,6 +2,9 @@
 #main{
     padding-top: 7rem;
 }
+#main .swiper-slide img{
+    width: 80%;
+}
 .public__default{
     width: 100%;
 }
@@ -16,7 +19,7 @@
     text-align: center;
 }   
 .items__swiper img{
-    width: 70%;
+    width: 50%;
     margin: 0 auto;
     object-fit: cover;    
 }

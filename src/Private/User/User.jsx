@@ -1,7 +1,16 @@
-export const User = () => {
+import { Route, Routes } from "react-router-dom"
+import { Header } from "../../Components"
+import {Hero} from "../Hero"
+export const User = () => {   
     return(
-        <div>
-            <h1>Use</h1>
-        </div>
+        <>
+            <Header/>
+            <main id="main__private">
+            <Routes>
+                <Route index  element={<Hero/>}/>
+                <Route path="/Гидроциклы" element={<Hero/>}/>
+            </Routes>
+            </main>
+        </>
     )
 }

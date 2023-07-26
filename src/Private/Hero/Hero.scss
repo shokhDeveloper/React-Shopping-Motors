@@ -1,6 +1,6 @@
 @use "../../Settings/scss/varieble";
 @use "../../Settings/scss/functions";
-#main{
+#main__private{
     width: 100%;
     height: auto;
     padding-top: 12rem;
@@ -14,7 +14,7 @@
 .hero_items__swiper{
     width: 100%;
 }
-.swiper-slide img{
+#main__private .swiper-slide img{
     width: 100%;
     border-radius: 10px;
 }

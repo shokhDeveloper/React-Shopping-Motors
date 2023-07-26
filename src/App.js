@@ -11,8 +11,9 @@ function App() {
       <Routes>
         {selector?.token ? (
           <>
-            <Route path="/" element={<Home />} />
+            <Route path="/*" element={<Home />} />
             <Route path="*" element={<Navigate to={"/"} replace={true}/>}/>
+
           </>
         ) : (
           <>

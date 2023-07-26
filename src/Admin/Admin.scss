@@ -1,0 +1,26 @@
+table td, table th{
+    border: 1px solid black;
+    padding: 1rem;
+    text-align: center;
+    font-size: 20px;
+    letter-spacing: 1px ;
+    text-transform: uppercase;
+}
+.admin{
+    text-align: center;
+    padding: 1rem;
+}
+.table__container{
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.table__container table{
+    width: 50%;
+    margin: 0 auto;
+}
+table td input[type="checkbox"]{
+    width: 20px;
+    height: 20px;
+}

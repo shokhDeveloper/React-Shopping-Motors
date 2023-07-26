@@ -6,6 +6,7 @@ header{
     position: fixed;
     width: 100%;
     z-index: 4;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.183)
 }
 .header__items{
     @include functions.flex(space-between);

@@ -24,7 +24,7 @@ export const Like = ({like, setLike}) => {
         }
     },[like])
     return(
-        <input ref={inputRef} onChange={(event) => {
+        <input className="like" ref={inputRef} onChange={(event) => {
             if(token !== null){
                 if(event.target.checked){
                     addItem(moto)
