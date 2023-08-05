@@ -30,12 +30,12 @@ export const DefaultSettingsLinks = () => {
                     </li>
                 </ul>
                 <DefaultData/>
-{/*                 
-                <Routes>
-                    <Route index element={<DefaultData/>}/>
-                    <Route path="/Самовывоз" element={<DefaultData/>}/>
-                </Routes> */}
-                {/* <DefaultLinksRoute/> */}
+        {/*                 
+                        <Routes>
+                            <Route index element={<DefaultData/>}/>
+                            <Route path="/Самовывоз" element={<DefaultData/>}/>
+                        </Routes> */}
+                        {/* <DefaultLinksRoute/> */}
 
             </div>
         </section>

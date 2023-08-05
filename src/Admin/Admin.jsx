@@ -1,12 +1,11 @@
 import "./Admin.scss";
 import axios from "axios"
-import { useCallback, useEffect, useRef } from "react"
+import { useCallback, useRef } from "react"
 import { useQuery } from "react-query"
-import { useDispatch, useSelector } from "react-redux"
+import { useSelector } from "react-redux"
 
 export const Admin = () => {
     const state = useSelector(state => state.Reducer)
-    const dispatch = useDispatch()
     const handleGetAdmin = useCallback(async () => {
     const request = await axios.get(process.env.REACT_APP_SERVER + "/admin")
     const response = await request.data

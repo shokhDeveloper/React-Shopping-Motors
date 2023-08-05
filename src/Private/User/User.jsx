@@ -8,6 +8,7 @@ export const User = () => {
             <main id="main__private">
             <Routes>
                 <Route index  element={<Hero/>}/>
+                <Route path="/*" element={<Hero/>}/>
                 <Route path="/Гидроциклы" element={<Hero/>}/>
             </Routes>
             </main>

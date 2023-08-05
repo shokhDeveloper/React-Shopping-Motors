@@ -84,7 +84,7 @@ export const Default = () => {
       </div>
     </section>
     <DefaultSettingsLinks/>
-    <TovarPokup/>  
+    <TovarPokup type={false}/>  
     <DefaultFooter/>
     </> 
   );

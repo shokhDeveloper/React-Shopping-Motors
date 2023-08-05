@@ -9,8 +9,15 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import { useState } from "react";
+import { HeroLinks } from "./HeroLinks";
+import { TovarPokup } from "../../Public/Pages/Default/TovarPokup";
+import { PopTovar } from "./PopTovar";
+import { Dalshe } from "./Dalshe";
+import { useSelector } from "react-redux";
+import { Artickle } from "./Artickle";
 export const Hero = () => {
   const date = new Date();
+  const {filterCar} = useSelector((state) => state.Reducer)
   const [state, setState] = useState([
     CarouselImgaAddText,
     CarouselImg,
@@ -19,6 +26,7 @@ export const Hero = () => {
     CarouselImgaAddText,
   ]);
   return (
+    <>
     <section className="hero">
       <div className="container">
         <div className="hero__items">
@@ -29,12 +37,12 @@ export const Hero = () => {
             slidesPerView={1}
             navigation
             pagination={{ clickable: true }}
-            onSwiper={(swiper) => console.log(swiper)}
-            onSlideChange={() => console.log("slide change")}
+            onSwiper={(swiper) => swiper}
+            onSlideChange={() => "Helo"}
           >
-            {state?.map((item) => {
+            {state?.map((item, index) => {
               return (
-                <SwiperSlide>
+                <SwiperSlide key={index}>
                   <img src={item} alt="" />
                 </SwiperSlide>
               );
@@ -67,5 +75,19 @@ export const Hero = () => {
         </div>
       </div>
     </section>
+    <HeroLinks/>
+    <PopTovar/>       
+    {(function(filter){
+      if(filter){
+        let keys = Object.keys(filter)
+        return(
+          keys?.map(item => {
+            return <Dalshe params={item}/>})
+        )
+      }
+    }(filterCar))}
+    <Artickle/>
+    <TovarPokup type={true}/>
+    </>
   );
 };

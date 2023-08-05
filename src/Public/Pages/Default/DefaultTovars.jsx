@@ -13,7 +13,7 @@ import "swiper/css/scrollbar";
 import { useSelector } from "react-redux";
 export const DefaultTovars = () => {
   const [like, setLike] = useState(false);
-  const {tovars} = useSelector((state) => state.Reducer)
+  const {tovars, token} = useSelector((state) => state.Reducer)
   return (
     <div className="default_tovars">
       <Swiper
@@ -21,17 +21,17 @@ export const DefaultTovars = () => {
          spaceBetween={50}
          slidesPerView={3}
          navigation
-         onSwiper={(swiper) => console.log(swiper)}
+         onSwiper={(swiper) => swiper}
       >
         {tovars?.map((item, index) => {
           return(
-            <SwiperSlide className="default_tovar">
+            <SwiperSlide key={index} className="default_tovar">
               <div style={{width: "100%"}}>
             <div className="default_tovar_header">
               {(index) % 2 === 0 ? (
                 <span>SALE</span>
               ): null}
-              <Like like={like} setLike={setLike} key={29021029} />
+              <Like like={like} item={item} setLike={setLike} key={index} />
             </div>
             <div className="default_tovar_body">
               <img
@@ -39,13 +39,14 @@ export const DefaultTovars = () => {
                 height={200}
                 src={item.image.oneX}
                 srcSet={`${item.image.oneX} 1x, ${item.image.thueX} 2x`}
+                className="default_tovar__image"
                 alt="Radio"
               />
               <h3>{item.name}</h3>
               <h4>{item.price}</h4>
               {(index+1) % 2 === 0 ? (
               <React.Fragment>
-              <NavLink to={`/sign-in`}>Сообщить о поступлении</NavLink>
+              <NavLink to={token ? "/tovar": `/sign-in`}>Сообщить о поступлении</NavLink>
               <Btn className="kupit_btn" style={{ padding: "0.5rem 0.7rem" }}>
                 <ShoppingCartOutlined style={{ fontSize: "30px" }} />
               </Btn>

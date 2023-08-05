@@ -1,6 +1,7 @@
 import GoogleImg from "../assets/images/Google.png";
 import { NavLink } from "react-router-dom";
 import { createGlobalStyle, styled } from "styled-components";
+import Korzina from "../assets/images/Korzina.png"
 export const GlobalStyle = createGlobalStyle`
     *::before, *::after, *{
         margin: 0;
@@ -18,6 +19,32 @@ export const GlobalStyle = createGlobalStyle`
     .border-transparent{
         border: 1px solid transparent;
         outline: 1px solid transparent;
+    }
+    .link{
+        font-size: 17px;
+        color: grey;
+        text-decoration: none;
+    }
+    .link__active{
+        color: #2F3035;
+        font-size: 17px;
+        text-decoration: none;
+    }
+    .link__default{
+        color: black;
+        font-size: 17px;
+        text-decoration: none;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid transparent;
+        font-weight: 400;
+    }
+    .link_default__active{
+        font-weight: 400;
+        color: black;
+        font-size: 17px;
+        text-decoration: none;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid #1C62CD;
     }
 `;
 export const Btn = styled.button`
@@ -84,4 +111,34 @@ export const LabelText = styled.label.attrs({
 })`
     font-size: 20px;
     color: ${({variant}) => LabelVariant[variant].color };
+`
+export const KorzinaBtn = styled.button`
+    padding: 1.3rem;
+    background: #1C62CD;
+    color: #fff;
+    border-radius: 10px 0px 0px 0px;
+    background-size: 30px;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+`
+export const HeIsBtn = styled.button`
+    padding: 0.5rem 1rem;
+    color: black;
+    font-size: 1.2rem;
+    &:hover{
+        text-decoration: underline;
+    }
+`
+export const DalsheBtn = styled.button.attrs({
+    type: "button"
+})`
+    padding: 0.5rem 1rem;
+    background: #fff;
+    color: #000;
+    letter-spacing: 1px;
+    font-size: 24px;
+    word-spacing: 5px;
 `

@@ -7,8 +7,10 @@ import { Context } from "../../Settings";
 import { HeartOutlined, ShoppingCartOutlined , UserOutlined, LoginOutlined} from "@ant-design/icons/lib/icons";
 import { NavBar } from "../Navbar";
 import { useSelector } from "react-redux";
+import { useCart } from "react-use-cart";
 export const Header = () => {
   const {token} = useSelector(state => state.Reducer)  
+  const {items} = useCart()
   const [location, setLocation] = useState({
         lat: null,
         long: null
@@ -16,7 +18,6 @@ export const Header = () => {
     const handleGetAdress = () => {
         navigator.geolocation.getCurrentPosition((position) => {
             const {coords:{latitude, longitude}} = position
-            console.log(latitude, longitude)
             setLocation({
                 lat: latitude,
                 long: longitude
@@ -65,6 +66,7 @@ export const Header = () => {
           {token ? (
             <div className="header_settings">
                 <button className="likes_product_btn">
+                    {items.length}
                     <HeartOutlined/>
                 </button>
                 <button className="settings_akkaunt_btn">
