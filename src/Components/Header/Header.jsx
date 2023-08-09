@@ -1,16 +1,17 @@
 import "./Header.scss"
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import Logo from "../../Settings/assets/images/лого.svg";
 import Location from "../../Settings/assets/images/Location.png";
 import { useContext, useEffect, useState } from "react";
 import { Context } from "../../Settings";
 import { HeartOutlined, ShoppingCartOutlined , UserOutlined, LoginOutlined} from "@ant-design/icons/lib/icons";
 import { NavBar } from "../Navbar";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useCart } from "react-use-cart";
 export const Header = () => {
-  const {token} = useSelector(state => state.Reducer)  
+  const {token, korzina} = useSelector(state => state.Reducer)  
   const {items} = useCart()
+  const navigate = useNavigate()
   const [location, setLocation] = useState({
         lat: null,
         long: null
@@ -27,7 +28,16 @@ export const Header = () => {
     useEffect(() => {
         handleGetAdress()
     },[])
+    const handleNavigate = (event) => {
+        if(event.target.classList.contains("likes_tovar_btn")){
+          navigate("/likes__tovars")
+        }else if(event.target.matches(".settings_akkaunt_btn")){
+          navigate("/settings")
+        }else if(event.target.closest(".shopping_cart_btn")){
+          navigate("/shopping")
 
+        }
+    }
     return (    
     <header>
       <div className="container">
@@ -64,16 +74,14 @@ export const Header = () => {
         ): null}
           </div>
           {token ? (
-            <div className="header_settings">
-                <button className="likes_product_btn">
-                    {items.length}
-                    <HeartOutlined/>
+            <div className="header__settings">
+                <button onClick={handleNavigate} className="likes_tovar_btn border-transparent ">
+                    <span className="like_tovar__count">{items.length ? items.length: 0}</span>
                 </button>
-                <button className="settings_akkaunt_btn">
-                    <UserOutlined/>
+                <button onClick={handleNavigate} className="settings_akkaunt_btn border-transparent">
                 </button>
-                <button className="shopping_cart_btn">
-                    <ShoppingCartOutlined/>
+                <button onClick={handleNavigate} className="shopping_cart_btn border-transparent">
+                <span className="like_tovar__count">{korzina ? korzina.length: null}</span>
                 </button>
             </div>
           ): (

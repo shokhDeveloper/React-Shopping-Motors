@@ -7,7 +7,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import { Like } from '../../Components/Like';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { HeIsBtn, KorzinaBtn } from "../../Settings";
 import { NavLink } from "react-router-dom";
@@ -15,13 +15,24 @@ import axios from "axios";
 import { Action } from "../../Settings/Redux/Settings";
 export const PopTovarCarousel = () => {
     const [like, setLike] = useState(false)
-    const {carArrayImg, filterCar} = useSelector((state) => state.Reducer )
+    const {carArrayImg, filterCar, korzina, tovarsAll} = useSelector((state) => state.Reducer )
     const dispatch = useDispatch()
     const handleClick = async () => {
       const request = await axios.get(process.env.REACT_APP_SERVER + "/cardMoto")
       const response = await  request.data
       dispatch(Action.createCar(response))
     }
+    const handleKorzina = async (id) => {
+      try{
+        let find = tovarsAll.find(item => item.id === id)
+        dispatch(Action.setKorzina(find))
+      }catch(error){
+        console.log(error)
+      }   
+    }
+    useEffect(() => {
+      console.log(korzina)
+    },[korzina])
     return(
      <>
       <Swiper className='pop__slider'
@@ -70,7 +81,7 @@ export const PopTovarCarousel = () => {
               {item.apperence ? (
                 null 
               ): (
-              <KorzinaBtn style={{backgroundImage:`url(${Korzina})` }}/>
+              <KorzinaBtn onClick={ () => handleKorzina(item.id)} style={{backgroundImage:`url(${Korzina})` }}/>
               )}
             </div>
         </SwiperSlide>

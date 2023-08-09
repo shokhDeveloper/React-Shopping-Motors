@@ -23,6 +23,7 @@ export const Like = ({item}) => {
         <input className="like" ref={inputRef} onChange={(event) => {
             console.log(item)
             if(event.target.checked){
+                setLike(true)
                 addItem(item)
             }else{
                 setLike(false)

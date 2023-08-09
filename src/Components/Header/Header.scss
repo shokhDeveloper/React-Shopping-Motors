@@ -59,3 +59,55 @@ header{
     padding-bottom: 0.5rem ;
     border-bottom: 2px solid varieble.$blue;
 }
+.header__settings{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-basis: 10%;
+}
+.header__settings button{
+    padding:  1rem;
+    margin: 0 0.5rem;
+    background-size: 30px;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: invert(1);
+    padding: 1.4rem; 
+    border-radius: 50%;
+}
+.header__settings .likes_tovar_btn{
+    position: relative;
+    background-image: url("../../Settings/assets/images/Not_Like.png");
+}
+.likes_tovar_btn .like__icon{
+    background: crimson;
+    border: 1px solid red;
+    
+}
+.like_tovar__count{
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 16px;
+    background: #14e3ff;
+    color: #000;
+    padding: 0 0.5rem;
+    border-radius: 50%;
+    transform: translate( 10px, -10px );
+}
+.header__settings .likes_tovar_btn span{
+    display: inline-block;
+}
+.settings_akkaunt_btn {
+    font-size: 20px;
+    border-radius: 50%;
+    color: #fff;
+    background-image: url("../../Settings/assets/images/user-removebg.png");    
+}
+.shopping_cart_btn{
+    font-size: 20px;
+    border-radius: 50%;
+    color: #fff;
+    background-image: url("../../Settings/assets/images/ShoppingCartRemove.png");
+    position: relative;
+}

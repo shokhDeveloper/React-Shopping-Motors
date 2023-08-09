@@ -23,12 +23,15 @@ import Sumka from "../assets/images/Sumka.png";
 import Jiket from "../assets/images/Jiket.png";
 import Drubin from "../assets/images/Drubin.png";
 import Ip from "../assets/images/Ip.png";
-import { setItem } from "../Locals";
+import { getItem, setItem } from "../Locals";
+import { array } from "yup";
 const initialToken = window.localStorage.getItem("token_auto") || null;
 const initialUser = window.localStorage.getItem("user_auto")
-  ? JSON.parse(window.localStorage.getItem("user_auto"))
-  : null;
-export const slice = createSlice({
+? JSON.parse(window.localStorage.getItem("user_auto"))
+: null;
+const korzina =  []
+let arr = []
+  export const slice = createSlice({
   name: "posts",
   initialState: {
     posts: [],
@@ -98,11 +101,13 @@ export const slice = createSlice({
         },
       },
     ],
+    "tovarsAll":[{"name":"Квадроциклы","price":"900 P","image":{"oneX":"http://localhost:3000/static/media/Moto.50fbbcd8d36b29bc3d5f.png","thueX":"http://localhost:3000/static/media/Moto.50fbbcd8d36b29bc3d5f.png"},"id":1, "type": "car"},{"name":"Гидроциклы","price":"900 P","image":{"oneX":"http://localhost:3000/static/media/Moto_2.352c2dbda1c1d9dc7f89.png","thueX":"http://localhost:3000/static/media/Moto_2.352c2dbda1c1d9dc7f89.png"},"id":2, "type": "car"},{"name":"Катера","price":"900 P","image":{"oneX":"http://localhost:3000/static/media/Moto_5.8bf562ebe49cdddebfc2.png","thueX":"http://localhost:3000/static/media/Moto_5.8bf562ebe49cdddebfc2.png"},"id":3, "type": "car"},{"name":"Вездеходы","price":"900 P","image":{"oneX":"http://localhost:3000/static/media/Moto_3.d2147df2acafb4ea77fc.png","thueX":"http://localhost:3000/static/media/Moto_3.d2147df2acafb4ea77fc.png"},"id":4, "type": "car"},{"name":"Водонепроницаемый Рюкзак","price":"9 800 ₽","image":"http://localhost:3000/static/media/Sumka.ac9f76a5f1158ac01538.png","id":5, "type": "tovar"},{"name":"Спасательный жилет BRP Men's Airflow PFD","price":"6 900 ₽","image":"http://localhost:3000/static/media/Jiket.6fc23201f1d3851732e2.png","id":6, "type": "tovar"},{"name":"BRP Audio-Premium System","price":"68 000 ₽","image":"http://localhost:3000/static/media/Drubin.09b81f646773285f7c8a.png","id":7, "type": "tovar"},{"name":"Спасательное снаряжение","image":"http://localhost:3000/static/media/Ip.2bc2af26efa2328c3413.png","id":8, "type": "tovar"},{"name":"BRP Audio-портативная система","price":"нет в наличии","image":{"oneX":"Radio1X","thueX":"Radio2X"},"id":9, "type": "tovar"},{"name":"Garmin Echomap Plus 62cv","price":"45 800 ₽","image":{"oneX":"Tel1x","thueX":"Tel2x"},"id":10, "type": "tovar"},{"name":"RF D.E.S.S.TM Key","price":"нет в наличии","image":{"oneX":"Control1x","thueX":"Control2x"},"id":11, "type": "tovar"},{"name":"Мужской костюм3мм","price":"7 000 ₽","image":{"oneX":"Tovar1x","thueX":"Tovar2x"},"id":12, "type": "tovar"}],
     link: "nomeru",
     filterCar: null,
     carArrayImg: [
       {"name":"Водонепроницаемый Рюкзак","price":"9 800 ₽","image":Sumka,"id":5, "type": "tovar"},{"name":"Спасательный жилет BRP Men's Airflow PFD","price":"6 900 ₽","image":Jiket,"id":6, "type": "tovar"},{"name":"BRP Audio-Premium System","price":"68 000 ₽","image":Drubin,"id":7, "type": "tovar"},{"name":"Спасательное снаряжение","image":Ip,"id":8, "type": "tovar"}
     ],
+    korzina
   },
 
   reducers: {
@@ -159,6 +164,18 @@ export const slice = createSlice({
       });
       state.filterCar = obj
     },
+    setKorzina(state, action){
+      try{
+        if(arr.length){          
+          arr.push(action.payload)
+          state.korzina = [...new Set(arr)]
+        }else{
+          arr.push(action.payload)
+        }
+      }catch(error){
+        state.korzina = error
+      }
+    }
   },
 });
 export const Action = slice.actions;

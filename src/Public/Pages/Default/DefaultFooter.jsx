@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 import { Btn } from "../../../Settings";
 import { InstagramOutlined, FacebookOutlined, YoutubeOutlined } from "@ant-design/icons";
-export const DefaultFooter = () => {
+export const DefaultFooter = ({type}) => {
   // const handleSub = async (event) => {
   //   const data = new FormData(event.target)
   //   const request = await axios.post(`https://formsubmit.co/shohijahonmusinkulov@email.com`, {
@@ -24,17 +24,41 @@ export const DefaultFooter = () => {
           </div>
           <ul className="footer_item">
             <li> <h5>Информация</h5> </li>
+           {type ? (
+            <>
             <li><NavLink to={"/О-компании"}> О компании </NavLink></li>
-            <li><NavLink to={"/Контакты"}>Контакты</NavLink></li>
-            <li><NavLink to={"/Акции"}>Акции</NavLink></li>
-            <li><NavLink to={"/Магазины"}>Магазины</NavLink></li>
+             <li><NavLink to={"/Магазины"}>Магазины</NavLink></li>
+             <li><NavLink to={"/Доставка_и_оплата"}>Доставка и оплата</NavLink></li>
+            </>
+           ):(
+            <>
+            <li><NavLink to={"/О-компании"}> О компании </NavLink></li>
+             <li><NavLink to={"/Контакты"}>Контакты</NavLink></li>
+             <li><NavLink to={"/Акции"}>Акции</NavLink></li>
+             <li><NavLink to={"/Магазины"}>Магазины</NavLink></li>
+       
+            </>
+           
+           )}
           </ul>
           <ul className="footer_item">
             <li> <h5>Информация</h5> </li>
+            {type ? (
+            <>
             <li><NavLink to={"/О-компании"}> О компании </NavLink></li>
-            <li><NavLink to={"/Контакты"}>Контакты</NavLink></li>
-            <li><NavLink to={"/Акции"}>Акции</NavLink></li>
-            <li><NavLink to={"/Магазины"}>Магазины</NavLink></li>
+             <li><NavLink to={"/Магазины"}>Магазины</NavLink></li>
+             <li><NavLink to={"/Доставка_и_оплата"}>Доставка и оплата</NavLink></li>
+            </>
+           ):(
+            <>
+            <li><NavLink to={"/О-компании"}> О компании </NavLink></li>
+             <li><NavLink to={"/Контакты"}>Контакты</NavLink></li>
+             <li><NavLink to={"/Акции"}>Акции</NavLink></li>
+             <li><NavLink to={"/Магазины"}>Магазины</NavLink></li>
+       
+            </>
+           
+           )}
           </ul>
          
           <ul className="footer_item">

@@ -15,6 +15,7 @@ import { PopTovar } from "./PopTovar";
 import { Dalshe } from "./Dalshe";
 import { useSelector } from "react-redux";
 import { Artickle } from "./Artickle";
+import {DefaultFooter} from "../../Public/Pages/Default/DefaultFooter"
 export const Hero = () => {
   const date = new Date();
   const {filterCar} = useSelector((state) => state.Reducer)
@@ -88,6 +89,7 @@ export const Hero = () => {
     }(filterCar))}
     <Artickle/>
     <TovarPokup type={true}/>
+    <DefaultFooter type={true}/>
     </>
   );
 };
