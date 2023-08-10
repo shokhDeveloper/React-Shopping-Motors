@@ -25,14 +25,11 @@ export const PopTovarCarousel = () => {
     const handleKorzina = async (id) => {
       try{
         let find = tovarsAll.find(item => item.id === id)
-        dispatch(Action.setKorzina(find))
+          dispatch(Action.setKorzina(find))
       }catch(error){
         console.log(error)
       }   
     }
-    useEffect(() => {
-      console.log(korzina)
-    },[korzina])
     return(
      <>
       <Swiper className='pop__slider'
@@ -81,7 +78,7 @@ export const PopTovarCarousel = () => {
               {item.apperence ? (
                 null 
               ): (
-              <KorzinaBtn onClick={ () => handleKorzina(item.id)} style={{backgroundImage:`url(${Korzina})` }}/>
+              <KorzinaBtn  onClick={ () => handleKorzina(item.id)} style={{backgroundImage:`url(${Korzina})` }}/>
               )}
             </div>
         </SwiperSlide>

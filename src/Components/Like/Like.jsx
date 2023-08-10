@@ -24,7 +24,7 @@ export const Like = ({item}) => {
             console.log(item)
             if(event.target.checked){
                 setLike(true)
-                addItem(item)
+                addItem({...item, price: 1000})
             }else{
                 setLike(false)
                 removeItem(item.id)

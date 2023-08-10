@@ -1,4 +1,4 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Swiper, { A11y, Navigation, Pagination, Scrollbar } from "swiper";
 import { SwiperSlide } from "swiper/react";
 import { Like } from "../../Components/Like";
@@ -6,9 +6,19 @@ import { useEffect, useState } from "react";
 import { KorzinaBtn } from "../../Settings";
 import Korzina from "../../Settings/assets/images/Korzina.png";
 import { NavLink } from "react-router-dom";
+import { Action } from "../../Settings/Redux/Settings";
 export const Dalshe = ({ params }) => {
-  const { filterCar } = useSelector((state) => state.Reducer);
+  const { filterCar, tovarsAll } = useSelector((state) => state.Reducer);
+  const dispatch = useDispatch()
   const [like, setLike] = useState(false);
+  const handleKorzina = (id) => {
+    try{
+      let find = tovarsAll?.find(item => item.id === id)
+      dispatch(Action.setKorzina(find))
+    }catch(error){
+      console.log(error)
+    }
+  }
   useEffect(() => {
     Swiper.use([Navigation, A11y]);
 
@@ -37,6 +47,7 @@ export const Dalshe = ({ params }) => {
                     <>
                       {filterCar[type]?.map((item, index) => {
                         const { id, apperence, name, image } = item;
+                        console.log(id)
                         const img =
                           typeof image === "object" && image?.oneX
                             ? image.oneX
@@ -56,7 +67,7 @@ export const Dalshe = ({ params }) => {
                               ) : (
                                 <>
                                   <span className="sale">SALE</span>
-                                  <Like like={like} setLike={setLike} />
+                                  <Like item={item} like={like} setLike={setLike} />
                                 </>
                               )}
                             </div>

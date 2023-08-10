@@ -38,6 +38,9 @@ export const Header = () => {
 
         }
     }
+    useEffect(() => {
+      console.log(korzina)
+    },[korzina])
     return (    
     <header>
       <div className="container">
@@ -81,7 +84,7 @@ export const Header = () => {
                 <button onClick={handleNavigate} className="settings_akkaunt_btn border-transparent">
                 </button>
                 <button onClick={handleNavigate} className="shopping_cart_btn border-transparent">
-                <span className="like_tovar__count">{korzina ? korzina.length: null}</span>
+                <span className="like_tovar__count">{korzina?.length ? korzina.length: null}</span>
                 </button>
             </div>
           ): (

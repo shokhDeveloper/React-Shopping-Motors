@@ -29,7 +29,7 @@ const initialToken = window.localStorage.getItem("token_auto") || null;
 const initialUser = window.localStorage.getItem("user_auto")
 ? JSON.parse(window.localStorage.getItem("user_auto"))
 : null;
-const korzina =  []
+const korzina =  getItem("korzina") ? JSON.parse(getItem("korzina")): []
 let arr = []
   export const slice = createSlice({
   name: "posts",
@@ -169,6 +169,7 @@ let arr = []
         if(arr.length){          
           arr.push(action.payload)
           state.korzina = [...new Set(arr)]
+          setItem("korzina", state.korzina)
         }else{
           arr.push(action.payload)
         }
