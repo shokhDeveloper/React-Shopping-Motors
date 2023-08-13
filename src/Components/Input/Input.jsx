@@ -9,7 +9,7 @@ import { LabelText } from "../../Settings";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { useState } from "react";
 
-export const Input = ({ params, password, text, register, errors }) => {
+export const Input = ({ params, password, text, register, errors, value, disabled }) => {
   const [showPassword, setShowPassword] = useState(false);
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
@@ -17,7 +17,6 @@ export const Input = ({ params, password, text, register, errors }) => {
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
   };
-  console.log(errors, params)
   return (
     <>
       {password ? (
@@ -28,9 +27,11 @@ export const Input = ({ params, password, text, register, errors }) => {
               Password
             </InputLabel>
             <OutlinedInput
+            disabled={disabled ? disabled: false}
             {...register(params)}   
             error={errors[params] ? true: false}
-              id="outlined-adornment-password"
+            defaultValue={"Password"}
+            id="outlined-adornment-password"
               type={showPassword ? "text" : "password"}
               endAdornment={
                 <InputAdornment position="end">
@@ -56,8 +57,9 @@ export const Input = ({ params, password, text, register, errors }) => {
             <InputLabel error={errors[params] ? true: false}  htmlFor={`outlined-adornment-${params}`}>
               {text}
             </InputLabel>
-            <OutlinedInput
+            <OutlinedInput   defaultValue={value ? value : null}
             error={errors[params] ? true: false}
+            disabled={disabled ? disabled: false}
             {...register(params)}
               id={`outlined-adornment-${params}`}
               type="text"

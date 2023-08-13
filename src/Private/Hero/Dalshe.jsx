@@ -104,6 +104,7 @@ export const Dalshe = ({ params }) => {
                             <div className="pop_slide__footer">
                               {apperence ? null : (
                                 <KorzinaBtn
+                                onClick={() => handleKorzina(id) }
                                   style={{ backgroundImage: `url(${Korzina})` }}
                                 />
                               )}

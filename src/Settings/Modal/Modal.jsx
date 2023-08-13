@@ -3,15 +3,15 @@ import { Input } from "../../Components"
 import "./Modal.scss"
 import { useDispatch, useSelector } from "react-redux";
 import { Action } from "../Redux/Settings";
-export const Modal = ({title, children, modal, error}) => {
+export const Modal = ({title, children, modal, error, type}) => {
     let idx = 0;
-    const {textErrorModal} = useSelector((state) => state.Reducer )
+    const {textErrorModal, successFullText, user} = useSelector((state) => state.Reducer )
     const dispatch = useDispatch()
     const pRef = useRef()  
     const handleTyping = () => {
         if(idx < textErrorModal.length){
             idx++
-            document.querySelector(".error__text").innerHTML += textErrorModal.charAt(idx-1)
+            document.querySelector(".error__text").innerHTML += textErrorModal.charAt(idx-1) 
             setTimeout(handleTyping, 100)
         }else{
             setTimeout(() => {
@@ -24,6 +24,8 @@ export const Modal = ({title, children, modal, error}) => {
         if(idx === textErrorModal.length && error){
             dispatch(Action.setErrorModal(false))
             window.location.reload()
+        }else if(idx === successFullText.length && type === "successFuly"){
+            dispatch(Action.setOrderModal(false))
         }
     }
     useEffect(() => {
@@ -34,6 +36,26 @@ export const Modal = ({title, children, modal, error}) => {
 
         }
     }, [modal, idx, error])
+    const handleTypingSuccessFull = () => {
+        if(idx < successFullText.length){
+            idx ++ 
+            document.querySelector(".error__text").innerHTML += successFullText.charAt(idx-2)
+            setTimeout(handleTypingSuccessFull, 100)
+        }else{
+            document.querySelector(".error__text").innerHTML += ` ${user.name} ${user.lastname} 😊` 
+            setTimeout(() => {
+                idx = 0
+                document.querySelector(".error__text").innerHTML = null  
+                dispatch(Action.setOrderModal(false))
+            }, 1000)
+        }
+    }
+    useEffect(() => {
+        if(type === "successFuly" && modal && idx < successFullText.length ){
+            handleTypingSuccessFull()
+            document.querySelector(".error__text").innerHTML = null
+        }
+    },[type, modal, idx])
     return(
         <div className="modal__overlay" style={{display: modal ? "flex": "none"}}>
             <div className="modal">
@@ -42,7 +64,7 @@ export const Modal = ({title, children, modal, error}) => {
                     <button onClick={handleClick} className="border-transparent">&times;</button>
                 </div>
                 <div className="modal__body">
-                    {error ? (
+                    {error || type === "successFuly" ? (
                         <>
                             <p ref={pRef} className="error error__text">
                                 

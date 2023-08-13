@@ -3,6 +3,9 @@ import { NavLink } from "react-router-dom";
 import { createGlobalStyle, styled } from "styled-components";
 import Korzina from "../assets/images/Korzina.png"
 export const GlobalStyle = createGlobalStyle`
+    ::-webkit-scrollbar{
+        display: none;
+    }
     *::before, *::after, *{
         margin: 0;
         padding: 0;
@@ -46,6 +49,23 @@ export const GlobalStyle = createGlobalStyle`
         padding-bottom: 0.5rem;
         border-bottom: 2px solid #1C62CD;
     }
+    .x{
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: 0rem 0.5rem;
+        background: crimson;
+        color: #fff;
+        font-size: 18px;
+    }
+    .x:active{
+        background: #fff;
+        color: #000;
+    }
+    .x:not(:active){
+        transition: 0.5s ease;
+    }
+    
 `;
 export const Btn = styled.button`
     padding: ${({className}) => className === "kupit_btn" ? "0.5rem 1.5rem": "0.5rem" };

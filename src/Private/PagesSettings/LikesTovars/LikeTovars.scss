@@ -1,0 +1,71 @@
+@use "../../../Settings/scss/functions";
+.like_tovars__items, .korzina__items{
+    display: grid;
+    grid-template: repeat(1, auto) / repeat(3, 1fr);
+    grid-auto-rows: auto;
+    grid-gap: 10px;
+}
+.korzina__items{
+    padding: 1rem 0rem;
+}
+.korzina__request{ 
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+    justify-content: center;
+    align-items: flex-end;
+    z-index: 9999999999999999999;   
+}
+.korzina_request__items{
+    width: 100%;
+    background: #fff;
+    transform: translateY(100%);
+    transition: 0.5s ease all;
+}
+.active__request{
+    transform: translateY(0%);
+}
+.korzina__btn{
+    text-align: end;
+}
+.order__form{
+    padding: 1rem 0rem;
+}
+.order__form output{
+    margin: 1rem 0rem;
+    text-align: center;
+}
+.order__form label{
+    width: 26%;
+    border: 1px solid black;
+    display: flex;
+    align-items: center;
+    padding: 0.3rem;
+}
+
+.order__form input{
+    padding: 0.5rem 0.3rem;
+    width: 100%;
+    font-size: 20px;
+}
+.order__form output h2{
+    font-size: 30px;
+    letter-spacing: 1px;
+}
+.order__form output h2 span{
+    display: block;
+}
+.order__form label::after{
+    content: " ";
+    display: inline-block;
+    width: 30px;
+    height: 40px;
+    background-image: url("../../../Settings/assets/images/Dollar-removebg-preview.png");
+    background-size: 30px;
+    background-position: calc(0%) calc(100%);
+    background-repeat: no-repeat;
+    
+}

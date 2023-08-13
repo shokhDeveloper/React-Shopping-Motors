@@ -1,0 +1,15 @@
+@use "../../../Settings/scss/functions";
+.akkaunt__settings{
+    text-align: center;
+}
+.akkaunt_settings__title{
+    padding: 1rem 0rem;
+    font-size: 35px
+}
+.akkaunt_settings__title span{
+    display: block
+}
+form{
+    @include functions.flex(center);
+    flex-direction: column;
+}

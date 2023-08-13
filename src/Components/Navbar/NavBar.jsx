@@ -1,8 +1,9 @@
-import { NavLink } from "react-router-dom"
+import { NavLink, useLocation } from "react-router-dom"
 
 export const NavBar = () => {
+    const location = useLocation()
     return(
-        <nav className="nav_bottom">
+        <nav className="nav_bottom" style={{display: location.pathname === "/settings" || location.pathname === "/likes__tovars" ? "none": null}}>
             <ul>
                 <li className="nav__list">
                     <NavLink className={({isActive}) => isActive ? "active_page": "page"} to={"/Квадроциклы"}>Квадроциклы</NavLink>

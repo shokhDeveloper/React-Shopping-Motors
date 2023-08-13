@@ -107,7 +107,15 @@ let arr = []
     carArrayImg: [
       {"name":"Водонепроницаемый Рюкзак","price":"9 800 ₽","image":Sumka,"id":5, "type": "tovar"},{"name":"Спасательный жилет BRP Men's Airflow PFD","price":"6 900 ₽","image":Jiket,"id":6, "type": "tovar"},{"name":"BRP Audio-Premium System","price":"68 000 ₽","image":Drubin,"id":7, "type": "tovar"},{"name":"Спасательное снаряжение","image":Ip,"id":8, "type": "tovar"}
     ],
-    korzina
+    korzina,
+    akkaunt:[],
+    disabledProfileSettings: true,
+    modalUpdate: false,
+    orderRequest: false,
+    korzinaRequestClassName: "korzina_request__items",
+    korzinaX: false,
+    orderModal: false,
+    successFullText: "Surovingiz muvaffaqiyatli yuborildi tez orada aloqaga chiqiladi hurmatli"
   },
 
   reducers: {
@@ -176,6 +184,27 @@ let arr = []
       }catch(error){
         state.korzina = error
       }
+    },
+    setAkkaunt(state, action){
+      state.korzina = action.payload
+    },
+    setDisabledProfileSettings(state, action){
+      state.disabledProfileSettings = action.payload
+    },
+    setModalUpdate(state, action){
+      state.modalUpdate = action.payload
+    },
+    setRequestOrder(state, action){
+      state.orderRequest = action.payload
+    },
+    setKorzinaClassName(state, action){
+      state.korzinaRequestClassName = action.payload
+    },
+    setKorzinaX(state, action){
+      state.korzinaX = action.payload
+    },
+    setOrderModal(state, action){
+      state.orderModal = action.payload
     }
   },
 });
