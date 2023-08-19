@@ -1,0 +1,137 @@
+@use "../../Settings/scss/functions";
+.gidro__filter{
+    text-align: start;
+}
+.gidro_filter__items{
+    display: grid;
+    grid-template: repeat(1, auto) / repeat(2, 1fr);
+
+}
+.gidro_filter__items .gidro_filter__child:nth-child(1){
+    @include functions.flex(space-between);
+    width: 80%;
+    color:#2F3035;
+}   
+.gidro_filter__items .gidro_filter__child:nth-child(2){
+    @include functions.flex(flex-end);
+    width: 100%;
+}
+.gidro_filter__items .gidro_filter__child select{
+    padding: 0.5rem 1rem;
+    font-size: 14px;
+    color: #000;
+    letter-spacing: 1px;
+    border: 1px solid #D7D9DF;
+}
+.gidro__filter .gidro__title{
+    padding: 1rem 0rem;
+}
+.gidro_filter__elements{
+    display: grid;
+    grid-template: repeat(1, auto ) / 20% 80%;
+    margin-top: 1rem;
+}
+.gidro_filter__bar{
+    padding: 0rem 1rem 0rem 0rem;
+}
+.gidro_filter__links{
+    width: 100%;
+    @include functions.flex(space-between);
+}
+.filter__bar{
+    text-align: start;
+    @include functions.flex(flex-start);
+    width: 100%;
+    margin-top: 1rem;
+    cursor: pointer;
+}
+.filter__bar form{
+    text-align: start;
+    @include functions.flex(flex-start);
+    width: 100%;
+}
+.filter__bar form output{
+    @include functions.flex(flex-start);
+    width: 100%;
+    margin-bottom: 1rem;
+}
+.filter__bar form output span:nth-child(1){
+    color: #C4C4C4;
+    margin-right: 1rem ;
+}
+.filter__bar form output span{
+    font-size: 1rem;
+    letter-spacing: 1px;
+}
+.filter__bar form .filter_bar__checks{
+    @include functions.flex(space-between);
+    width: 100%;
+}
+.filter__bar form .filter_bar__checks label{
+    display: flex;
+    flex-basis: 50%;
+    justify-content: flex-start;
+}
+.filter__bar form .filter_bar__checks label p{
+    font-size: 16px;
+}   
+.filter__bar form .filter_bar__checks label input[type="checkbox"]{
+    margin-right: 0.5rem;
+}
+.filter__bar form output:not(:first-child){
+    margin-top: 2rem;
+}
+.filter__bar form  .range{
+    width: 100%;
+    display: block;   
+}
+.filter__bar form  .range input[type="range"]{
+    width: 200px;    
+}
+.filter__bar  .price__texts{
+    padding-top: 1rem;
+}
+.filter__bar  .price__texts p{
+    color: #C4C4C4; 
+    font-weight: 100;
+}
+.filter__bar  .price__texts p span{
+    margin-right: 0.3rem;
+    color: #C4C4C4;
+}
+.filter__bar  .price__texts p small{
+    text-decoration: underline;
+    font-size: 1em;
+}
+.filter__bar  .price__texts p:hover{
+    color: black;
+}
+.filter_by_static{
+    position: relative;
+    margin: 1rem 0rem;
+    
+}
+.filter_by_static .bar_group__filter{
+    position: absolute;
+    top: 1.3rem;
+    right: -0.3rem;
+    border-radius: 10px;
+}
+.bar_group__filter{
+    background: #fff;
+    padding: 0.2rem;
+    list-style: none;
+    box-shadow: 0px 0px 10px -3px black;
+    z-index: 1;
+}
+.bar_group__filter li{
+    padding: 0.5rem 0rem;
+}
+.filter_by_static p{
+    font-weight: 600;
+    font-size: 17px;
+}
+.filter_by_static p:nth-child(2){
+    font-weight: 400;
+    font-size: 16px;
+}

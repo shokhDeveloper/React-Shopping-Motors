@@ -1,13 +1,15 @@
 import { NavLink } from "react-router-dom";
 import "../LikesTovars/LikeTovars.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { Btn, Modal } from "../../../Settings";
+import { Btn, Modal, setItem } from "../../../Settings";
 import { Action } from "../../../Settings/Redux/Settings";
 import { useEffect } from "react";
 import { useMutation } from "react-query";
 import axios from "axios";
+import { useCart } from "react-use-cart";
 export const ShoppingTovars = () => {
   const { korzina, orderRequest, korzinaRequestClassName, korzinaX, user, orderModal } = useSelector((state) => state.Reducer);
+  const {removeItem} = useCart()
   const dispatch = useDispatch()
   const {mutate} = useMutation((data) => {
     axios.post(process.env.REACT_APP_SERVER + "/order", data).then(response => {
@@ -51,6 +53,11 @@ export const ShoppingTovars = () => {
         }, 1000)
     }
   },[korzinaX, orderRequest])
+  const handleDeleteTovar = (id) =>{
+    let filter = korzina.filter(item => item.id !== id)
+    dispatch(Action.setDeleteKorzinaTovar(filter))
+    setItem("korzina", filter)
+  }
   return (
     <section className="korzina">
       <div className="container">
@@ -87,6 +94,9 @@ export const ShoppingTovars = () => {
                           <h3>9 800 ₽</h3>
                         </>
                       )}
+                    </div>
+                    <div className="pop_slide__footer">
+                      <Btn onClick={ () => handleDeleteTovar(id)} className="kupit_btn" variant={"danger"}>Remove</Btn>
                     </div>
                   </div>
                 );

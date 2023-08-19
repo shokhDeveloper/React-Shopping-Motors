@@ -115,7 +115,11 @@ let arr = []
     korzinaRequestClassName: "korzina_request__items",
     korzinaX: false,
     orderModal: false,
-    successFullText: "Surovingiz muvaffaqiyatli yuborildi tez orada aloqaga chiqiladi hurmatli"
+    successFullText: "Surovingiz muvaffaqiyatli yuborildi tez orada aloqaga chiqiladi hurmatli",
+    gidroText: false,
+    price_filter: 100,
+    bar_display: false,
+    dvigitel_display: false
   },
 
   reducers: {
@@ -205,6 +209,21 @@ let arr = []
     },
     setOrderModal(state, action){
       state.orderModal = action.payload
+    },
+    setDeleteKorzinaTovar(state, action){
+      state.korzina = action.payload
+    },
+    setTextGidro(state, action){
+      state.gidroText = action.payload
+    },
+    setPrice(state, action){
+      state.price_filter = action.payload
+    },
+    setBarDisplay(state, action){
+      state.bar_display = action.payload
+    },
+    setDvigitel(state, action){
+      state.dvigitel_display = action.payload
     }
   },
 });

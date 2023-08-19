@@ -4,8 +4,8 @@
       "name": "Shohijahon",
       "lastname": "Musinkulov",
       "email": "shohijahonmusinkulov@gmail.com",
-      "password": "$2a$10$mx.ElTxiR2Ws9CU0Vlq8I.Vi.s70zS17Ua8E2UqoF8A.oeMB2YOHW",
-      "date": " 13.08.2023, 11:08:39 Update its profile ...",
+      "password": "$2a$10$0PRSGuztQVjFXi41d27DEutVtAcalNIeQB0cmhJEBuHSDQYwBR8OC",
+      "date": " 19.08.2023, 13:33:21 Update its profile ...",
       "id": 1
     },
     {
@@ -274,6 +274,103 @@
       },
       "number": "998991457766",
       "id": 1
+    },
+    {
+      "korzina": [
+        {
+          "name": "Водонепроницаемый Рюкзак",
+          "price": "9 800 ₽",
+          "image": "http://localhost:3000/static/media/Sumka.ac9f76a5f1158ac01538.png",
+          "id": 5,
+          "type": "tovar"
+        },
+        {
+          "name": "Спасательный жилет BRP Men's Airflow PFD",
+          "price": "6 900 ₽",
+          "image": "http://localhost:3000/static/media/Jiket.6fc23201f1d3851732e2.png",
+          "id": 6,
+          "type": "tovar"
+        }
+      ],
+      "user": {
+        "name": "Shohijahon",
+        "lastname": "Musinkulov",
+        "email": "shohijahonmusinkulov@gmail.com",
+        "date": " 13.08.2023, 11:08:39 Update its profile ...",
+        "id": 1
+      },
+      "number": "998930545496",
+      "id": 2
+    },
+    {
+      "korzina": [
+        {
+          "name": "Водонепроницаемый Рюкзак",
+          "price": "9 800 ₽",
+          "image": "http://localhost:3000/static/media/Sumka.ac9f76a5f1158ac01538.png",
+          "id": 5,
+          "type": "tovar"
+        }
+      ],
+      "user": {
+        "name": "Shohijahon",
+        "lastname": "Musinkulov",
+        "email": "shohijahonmusinkulov@gmail.com",
+        "date": " 13.08.2023, 11:08:39 Update its profile ...",
+        "id": 1
+      },
+      "number": "998930545496",
+      "id": 3
+    },
+    {
+      "korzina": [
+        {
+          "name": "BRP Audio-Premium System",
+          "price": "68 000 ₽",
+          "image": "http://localhost:3000/static/media/Drubin.09b81f646773285f7c8a.png",
+          "id": 7,
+          "type": "tovar"
+        },
+        {
+          "name": "Спасательный жилет BRP Men's Airflow PFD",
+          "price": "6 900 ₽",
+          "image": "http://localhost:3000/static/media/Jiket.6fc23201f1d3851732e2.png",
+          "id": 6,
+          "type": "tovar"
+        }
+      ],
+      "user": {
+        "name": "Shohijahon",
+        "lastname": "Musinkulov",
+        "email": "shohijahonmusinkulov@gmail.com",
+        "date": " 13.08.2023, 11:08:39 Update its profile ...",
+        "id": 1
+      },
+      "number": "998991457766",
+      "id": 4
+    },
+    {
+      "korzina": [
+        {
+          "name": "Гидроциклы",
+          "price": "900 P",
+          "image": {
+            "oneX": "http://localhost:3000/static/media/Moto_2.352c2dbda1c1d9dc7f89.png",
+            "thueX": "http://localhost:3000/static/media/Moto_2.352c2dbda1c1d9dc7f89.png"
+          },
+          "id": 2,
+          "type": "car"
+        }
+      ],
+      "user": {
+        "name": "Shohijahon",
+        "lastname": "Musinkulov",
+        "email": "shohijahonmusinkulov@gmail.com",
+        "date": " 13.08.2023, 11:08:39 Update its profile ...",
+        "id": 1
+      },
+      "number": "998991457766",
+      "id": 5
     }
   ]
 }

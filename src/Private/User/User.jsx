@@ -11,7 +11,7 @@ export const User = () => {
             <Routes>
                 <Route index  element={<Hero/>}/>
                 <Route path="/*" element={<Hero/>}/>
-                <Route path="/Гидроциклы" element={<Gidro/>}/>
+                <Route path="/Гидроциклы/*" element={<Gidro/>}/>
                 <Route path="/settings" element={<Akkaunt/>}/>
                 <Route path="/likes__tovars" element={<LikesTovars/>}/>
                 <Route path="/shopping" element={<ShoppingTovars/>}/>

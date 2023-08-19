@@ -10,6 +10,7 @@ export const GlobalStyle = createGlobalStyle`
         margin: 0;
         padding: 0;
         box-sizing: border-box;
+        user-select:  none;
     }
     .container{
         max-width: 1450px;
@@ -48,6 +49,7 @@ export const GlobalStyle = createGlobalStyle`
         text-decoration: none;
         padding-bottom: 0.5rem;
         border-bottom: 2px solid #1C62CD;
+        text-transform: capitalize;
     }
     .x{
         position: absolute;
@@ -65,11 +67,20 @@ export const GlobalStyle = createGlobalStyle`
     .x:not(:active){
         transition: 0.5s ease;
     }
+    .not__active{
+        color: #C4C4C4;
+        font-size: 17px;
+        text-transform: capitalize;
+        text-decoration: none;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid transparent;
+    }
+    
     
 `;
 export const Btn = styled.button`
     padding: ${({className}) => className === "kupit_btn" ? "0.5rem 1.5rem": "0.5rem" };
-    background: #1C62CD;
+    background: ${({variant}) => variant === "danger" ?  "#cd371c": "#1C62CD"};
     color: #fff;
     font-size: 17px;
     border: 1px solid transparent;
@@ -155,10 +166,10 @@ export const HeIsBtn = styled.button`
 export const DalsheBtn = styled.button.attrs({
     type: "button"
 })`
-    padding: 0.5rem 1rem;
+    padding: ${({variant}) => variant === "small" ? "0.2rem" : "0.5rem 1rem" } ;
     background: #fff;
     color: #000;
     letter-spacing: 1px;
-    font-size: 24px;
+    font-size: ${({variant}) => variant === "small"? "18px": "24px"};
     word-spacing: 5px;
 `
