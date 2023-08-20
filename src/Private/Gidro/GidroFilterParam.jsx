@@ -3,8 +3,17 @@ import "./Gidro.scss";
 import { DownOutlined, UpOutlined } from "@ant-design/icons";
 import { useDispatch, useSelector } from "react-redux";
 import { Action } from "../../Settings/Redux/Settings";
+import { NavLink } from "react-router-dom";
+import { Asistent, Btn } from "../../Settings";
 export const GidroFilterParam = () => {
-  const { price_filter, bar_display, dvigitel_display } = useSelector((state) => state.Reducer);
+  const {
+    price_filter,
+    bar_display,
+    dvigitel_display,
+    speed_display,
+    model_display,
+    filter_asistent
+  } = useSelector((state) => state.Reducer);
   const dispatch = useDispatch();
   const handleChange = (event) => {
     if (event.target.value.length) {
@@ -12,29 +21,45 @@ export const GidroFilterParam = () => {
     }
   };
   const handleDalsheGroup = (event) => {
-    switch(event.target.id){
-      case "moshnost":{
-        dispatch(Action.setBarDisplay(!bar_display))
-        dispatch(Action.setDvigitel(false))
-      }break;
-      case "dvigitel":{
-        dispatch(Action.setDvigitel(!dvigitel_display))
-        dispatch(Action.setBarDisplay(false))
+    switch (event.target.id) {
+      case "moshnost":
+        {
+          dispatch(Action.setBarDisplay(!bar_display));
+          dispatch(Action.setDvigitel(false));
+          dispatch(Action.setSpeed(false));
+        }
+        break;
+      case "dvigitel":
+        {
+          dispatch(Action.setDvigitel(!dvigitel_display));
+          dispatch(Action.setBarDisplay(false));
+          dispatch(Action.setSpeed(false));
+        }
+        break;
+      case "speed": {
+        dispatch(Action.setSpeed(!speed_display));
+        dispatch(Action.setDvigitel(false));
+        dispatch(Action.setBarDisplay(false));
       }
     }
-  }
+  };
   const handleClick = (event) => {
-    if(event.target.matches("#moshnost") || event.target.matches("#dvigitel")){
-      console.log(false)
-    }else{
-      dispatch(Action.setDvigitel(false))
-      dispatch(Action.setBarDisplay(false))
+    if (
+      event.target.matches("#moshnost") ||
+      event.target.matches("#dvigitel") ||
+      event.target.matches("#speed")
+    ) {
+      return false;
+    } else {
+      dispatch(Action.setDvigitel(false));
+      dispatch(Action.setBarDisplay(false));
+      dispatch(Action.setSpeed(false));
     }
-  }
+  };
   useEffect(() => {
-    window.addEventListener("click", handleClick)
-    return () => window.removeEventListener("click", handleClick)
-  },[])
+    window.addEventListener("click", handleClick);
+    return () => window.removeEventListener("click", handleClick);
+  }, []);
   return (
     <div className="filter__bar">
       <form action="https://echo.htmlacademy.ru" method="POST">
@@ -111,32 +136,173 @@ export const GidroFilterParam = () => {
             <span>от</span> <small>100 000</small>
           </p>
           <p>
-            <span>до</span><small>500 000</small>
+            <span>до</span>
+            <small>500 000</small>
           </p>
         </div>
         <div className="filter_bar__checks filter_by_static">
           <p>Мощность, л.с.</p>
-          <p onClick={handleDalsheGroup} id="moshnost">90 {bar_display ? (
-            <UpOutlined/>
-          ): <DownOutlined/>} </p>
-          <ul className="bar_group__filter" style={{display: bar_display ? "block": "none"}}>
-            <li><button className="border-transparent">90</button></li>
-            <li><button className="border-transparent">100</button></li>
-            <li><button className="border-transparent">120</button></li>
-            <li><button className="border-transparent">140</button></li>
+          <p onClick={handleDalsheGroup} id="moshnost">
+            90 {bar_display ? <UpOutlined /> : <DownOutlined />}{" "}
+          </p>
+          <ul
+            className="bar_group__filter"
+            style={{ display: bar_display ? "block" : "none" }}
+          >
+            <li>
+              <button className="border-transparent">90</button>
+            </li>
+            <li>
+              <button className="border-transparent">100</button>
+            </li>
+            <li>
+              <button className="border-transparent">120</button>
+            </li>
+            <li>
+              <button className="border-transparent">140</button>
+            </li>
           </ul>
         </div>
         <div className="filter_bar__checks filter_by_static">
           <p> Мощность двигателя, л.с..</p>
-          <p onClick={handleDalsheGroup} id="dvigitel">90 {dvigitel_display ? (
-            <UpOutlined/>
-          ): <DownOutlined/>} </p>
-          <ul className="bar_group__filter" style={{display: dvigitel_display? "block": "none"}}>
-            <li><button className="border-transparent">90</button></li>
-            <li><button className="border-transparent">100</button></li>
-            <li><button className="border-transparent">120</button></li>
-            <li><button className="border-transparent">140</button></li>
+          <p onClick={handleDalsheGroup} id="dvigitel">
+            90 {dvigitel_display ? <UpOutlined /> : <DownOutlined />}{" "}
+          </p>
+          <ul
+            className="bar_group__filter"
+            style={{ display: dvigitel_display ? "block" : "none" }}
+          >
+            <li>
+              <button className="border-transparent">90</button>
+            </li>
+            <li>
+              <button className="border-transparent">100</button>
+            </li>
+            <li>
+              <button className="border-transparent">120</button>
+            </li>
+            <li>
+              <button className="border-transparent">140</button>
+            </li>
           </ul>
+        </div>
+        <div className="filter_bar__checks filter_by_static">
+          <p>Макс. скорость</p>
+          <p onClick={handleDalsheGroup} id="speed">
+            {" "}
+            90
+            {speed_display ? <UpOutlined /> : <DownOutlined />}
+            <ul
+              className="bar_group__filter"
+              style={{ display: speed_display ? "block" : "none" }}
+            >
+              <li>
+                <button className="border-transparent">90</button>
+              </li>
+              <li>
+                <button className="border-transparent">100</button>
+              </li>
+              <li>
+                <button className="border-transparent">120</button>
+              </li>
+              <li>
+                <button className="border-transparent">140</button>
+              </li>
+            </ul>
+          </p>
+        </div>
+        <output style={{ marginTop: "0.5rem" }}>
+          <UpOutlined />
+          <p>
+            <strong>Бренд</strong>
+          </p>
+        </output>
+        <div className="filter_bar__checks">
+          <label htmlFor="BRP">
+            <input type="checkbox" checked id="BRP" name="model" />
+            <p> <small>BRP</small> </p>
+          </label>
+          <label htmlFor="spark">
+            <input type="checkbox" id="spark" checked name="model" />
+            <p> <small>Spark</small> </p>
+          </label>
+        </div>
+        <div className="filter_bar__checks" style={{ marginTop: "1rem" }}>
+          <label htmlFor="spark3">
+            <input type="checkbox" checked={false} id="sprark3" name="model" />
+            <p> <small>Spark 3</small> </p>
+          </label>
+        </div>
+        <div className="filter_bar__checks" style={{marginTop: "1rem"}}>
+          {model_display ? (
+            <>
+              <label htmlFor="gtr">
+                <input
+                  type="checkbox"
+                  checked={false}
+                  id="gtr"
+                  name="model"
+                />
+                <p> <small>GTR</small> </p>
+              </label>
+              <label htmlFor="sea">
+                <input type="checkbox" id="sea" name="sea" />
+                <p> <small>SEA</small> </p>
+              </label>
+
+            </>
+          ) : (
+            <> <NavLink onClick={() => dispatch(Action.setModelDisplay(!model_display))}>Показать еще</NavLink> </>
+          )}
+        </div>
+        <output>
+          <UpOutlined/>
+          <p><strong>Модель</strong></p>
+        </output>
+        <div className="filter_bar__checks search_model">
+        <label htmlFor="model">
+            <input type="text" placeholder="Введите модель " name="model" id="model" />
+        </label>
+       
+        </div>
+        <output>
+          <UpOutlined/>
+          <p><strong>Акции</strong></p>
+        </output>
+        <div className="filter_bar__checks">
+            <Asistent className={"sale"}>SALE</Asistent>
+            <Asistent onClick={() => dispatch(Action.setAsistent("new"))} className={ filter_asistent === "new" ? "asistent__active" : "asistent"}>NEW</Asistent>
+            <Asistent onClick={() => dispatch(Action.setAsistent("hit"))} className={ filter_asistent === "hit" ? "asistent__active" : "asistent"}>HIT</Asistent>
+            <Asistent onClick={() => dispatch(Action.setAsistent("diler"))} className={ filter_asistent === "diler" ? "asistent__active" : "asistent"}>ДИЛЕР</Asistent>
+        </div>
+        <output>
+          <UpOutlined/>
+          <p><strong>Страны</strong></p>
+        </output>
+        <div className="filter_bar__checks">
+          <label htmlFor="rossiya">
+            <input type="checkbox" id="rossiya" name="region" />
+            <p><small>Россия</small></p>
+          </label>
+        <label htmlFor="germaniya">
+            <input type="checkbox" id="germaniya"  name="region"/>
+            <p><small>Германия</small></p>
+          </label>
+        </div>
+        <div className="filter_bar__checks">
+          <label htmlFor="kitay">
+            <input type="checkbox" id="kitay" name="region" />
+            <p><small>Китай</small></p>
+          </label>
+          <label htmlFor="ssha">
+            <input type="checkbox" id="ssha" name="region" />
+            <p><small>CША</small></p>
+          </label>      
+        </div>
+        <div className="filter_bar__checks submitter">
+            <Btn type="submit" className="kupit_btn">
+            ВЫБРАТЬ
+            </Btn>
         </div>
       </form>
     </div>

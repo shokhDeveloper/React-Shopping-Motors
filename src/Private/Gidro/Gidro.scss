@@ -66,6 +66,7 @@
 .filter__bar form .filter_bar__checks{
     @include functions.flex(space-between);
     width: 100%;
+    margin-top: 1rem;
 }
 .filter__bar form .filter_bar__checks label{
     display: flex;
@@ -134,4 +135,20 @@
 .filter_by_static p:nth-child(2){
     font-weight: 400;
     font-size: 16px;
+}
+.filter__bar .search_model{
+    width: 100%;
+}
+.filter__bar .search_model label{
+    flex-grow: 1;
+}
+.filter__bar .search_model label input{
+    width: 100%;
+    padding: 0.5rem 1rem;
+    border: 1px solid#E0E0E0;
+    outline: 1px solid transparent;
+}
+.filter__bar .submitter button{
+    flex-grow: 1;
+    
 }

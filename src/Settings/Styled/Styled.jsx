@@ -173,3 +173,8 @@ export const DalsheBtn = styled.button.attrs({
     font-size: ${({variant}) => variant === "small"? "18px": "24px"};
     word-spacing: 5px;
 `
+export const Asistent = styled.span`
+    padding: 0.5rem ;
+    color: ${({className}) => className === "sale" ? "#fff": "#BDBEC2"};
+    background: ${({className}) => className === "sale" ? "#1C62CD": className === "asistent__active" ? "#2F3035" : "transparent"};
+`

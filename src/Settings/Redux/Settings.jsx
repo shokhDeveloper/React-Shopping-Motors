@@ -119,7 +119,10 @@ let arr = []
     gidroText: false,
     price_filter: 100,
     bar_display: false,
-    dvigitel_display: false
+    dvigitel_display: false,
+    speed_display: false,
+    model_display: false,
+    filter_asistent: ""
   },
 
   reducers: {
@@ -224,6 +227,15 @@ let arr = []
     },
     setDvigitel(state, action){
       state.dvigitel_display = action.payload
+    },
+    setSpeed(state, action){
+      state.speed_display = action.payload
+    },
+    setModelDisplay(state, action){
+      state.model_display = action.payload
+    },
+    setAsistent(state, action){
+      state.filter_asistent = action.payload
     }
   },
 });

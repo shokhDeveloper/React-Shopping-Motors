@@ -12,7 +12,7 @@ export const Bar = () => {
             <div className="gidro_filter_bar__items">
                <Routes>
                     <Route index element={<GidroFilterParam/>}/>
-                    <Route path="/Параметры" element={<GidroFilterParam/>}/>
+                    <Route path="/Параметры/*" element={<GidroFilterParam/>}/>
                     <Route path="/по-марке" element={<h1>Marke</h1>}/>
                 </Routes> 
             </div>
