@@ -34,6 +34,213 @@
     }
   ],
   "posts": [],
+  "car":[
+    {
+      "name": "Гидроцикл BRP SeaDoo GTI 155hp SE Long Blue Metallic",
+      "price": "100000 P",
+      "image": {
+        "oneX": "http://localhost:3000/static/media/Moto.50fbbcd8d36b29bc3d5f.png",
+        "thueX": "http://localhost:3000/static/media/Moto.50fbbcd8d36b29bc3d5f.png"
+      },
+      "id": 1,
+      "type": "BRP",
+      "settings": {
+        "new": true
+      },
+      "region": "rossiya",
+      "speed": 120,
+      "max": 120,
+      "dvigitel": 120,
+      "lich": true,
+      "zakaz":false
+
+    },
+    {
+      "name": "Гидроцикл BRP SeaDoo GTI 130hp SE Black Mango",
+      "price": "200000 P",
+      "image": {
+        "oneX": "http://localhost:3000/static/media/Moto_2.352c2dbda1c1d9dc7f89.png",
+        "thueX": "http://localhost:3000/static/media/Moto_2.352c2dbda1c1d9dc7f89.png"
+      },
+      "id": 2,
+      "type": "spark",
+      "settings": {
+        "hit": true
+      },
+      "region": "germaniya",
+      "speed": 90,
+      "max": 90,
+      "dvigitel": 90,
+      "lich": false,
+      "zakaz":true
+    },
+    {
+      "name": "Гидроцикл BRP SeaDoo GTR 230hp X California green ",
+      "price": "300000 P",
+      "image": {
+        "oneX": "http://localhost:3000/static/media/Moto_5.8bf562ebe49cdddebfc2.png",
+        "thueX": "http://localhost:3000/static/media/Moto_5.8bf562ebe49cdddebfc2.png"
+      },
+      "id": 3,
+      "type": "spark",
+      "settings": {
+        "diler": true
+      },
+      "region": "kitay",
+      "speed": 140,
+      "max": 120,
+      "dvigitel": 120,
+      "lich": true,
+      "zakaz":false
+    },
+    {
+      "name": "Гидроцикл BRP SeaDoo GTR 230hp STD Black / Gulfstream",
+      "price": "350000 P",
+      "image": {
+        "oneX": "http://localhost:3000/static/media/Moto_3.d2147df2acafb4ea77fc.png",
+        "thueX": "http://localhost:3000/static/media/Moto_3.d2147df2acafb4ea77fc.png"
+      },
+      "id": 4,
+      "type": "spark3",
+      "settings": {
+        "hit": true
+      },
+      "region": "ssha",
+      "speed": 100,
+      "max": 100,
+      "dvigitel": 100,
+      "lich": false,
+      "zakaz":true
+    },
+    {
+      "name": "Гидроцикл BRP SeaDoo WAKE 230hp PRO Teal blue",
+      "price": "350000 P",
+      "image": "http://localhost:3000/static/media/moto_6.391c0bcf3504ebee9abf.png",
+      "id": 5,
+      "type": "BRP",
+      "settings": {
+        "new": true
+      },
+      "region": "rossiya",
+      "speed":90,
+      "max": 90,
+      "dvigitel": 90,
+      "lich": true,
+      "zakaz":false
+    },
+    {
+      "name": "Гидроцикл Spark 2-UP 900 Ho Ace Pineapple ",
+      "price": "500000 P",
+      "image": "http://localhost:3000/static/media/moto_7png.ddc69801ee2483d7c5ee.png",
+      "id": 6,
+      "type": "spark",
+      "settings": {
+        "hit": true
+      },
+      "region": "germaniya",
+      "speed":140,
+      "max": 140,
+      "dvigitel": 140,
+      "lich": false,
+      "zakaz":true
+    },
+    {
+      "name": "Гидроцикл BRP SeaDoo WAKE 230hp PRO Teal blue",
+      "price": "400000 P",
+      "image": "http://localhost:3000/static/media/Moto_8.4f519161ad5858027bd2.png",
+      "id": 7,
+      "type": "spark3",
+      "settings": {
+        "sale": true
+      },
+      "region": "ssha",
+      "speed": 120,
+      "max": 120,
+      "dvigitel": 120,
+      "lich": true,
+      "zakaz":false
+    },
+    {
+      "name": "Гидроцикл Spark 3-UP 900 HO Ace IBR Blueberry",
+      "price": "400000 P",
+      "image": "http://localhost:3000/static/media/Moto_10.aefbc42ab8ba7c20d7da.png",
+      "id": 8,
+      "type": "BRP",
+      "settings": {
+        "new": true
+      },
+      "region": "rossiya",
+      "speed": 100,
+      "max": 100,
+      "dvigitel": 100,
+      "lich": false,
+      "zakaz":true
+    },
+    {
+      "name": "Гидроцикл BRP Sea-doo Spark 2-UP 900 Ace Vanilla ",
+      "price": "400000 P",
+      "image": "http://localhost:3000/static/media/Moto_9.4562efa606d4559f91cc.png",
+      "id": 9,
+      "type": "spark",
+      "settings": {
+        "hit": true
+      },
+      "region": "ssha",
+      "speed": 120,
+      "max": 120,
+      "dvigitel": 120,
+      "lich": true,
+      "zakaz":false
+    },
+    {
+      "name": "Гидроцикл BRP Sea-doo Spark 2-UP 900 Ace Vanilla ",
+      "price": "400000 P",
+      "image": "http://localhost:3000/static/media/Moto_11.400723e95fbccb4b4ff2.png",
+      "id": 10,
+      "type": "BRP",
+      "settings": {
+        "hit": true
+      },
+      "region": "germaniya",
+      "speed": 140,
+      "max": 140,
+      "dvigitel": 140,
+      "lich": false,
+      "zakaz":true
+    },
+    {
+      "name": "Гидроцикл BRP Sea-doo Spark 2-UP 900 Ace Vanilla ",
+      "price": "500000 P",
+      "image": "http://localhost:3000/static/media/Moto_12.a795ed375db07350712e.png",
+      "id": 11,
+      "type": "spark3",
+      "settings": {
+        "sale": true
+      },
+      "region": "ssha",
+      "speed": 140,
+      "max": 140,
+      "dvigitel": 140,
+      "lich": true,
+      "zakaz":false
+    },
+    {
+      "name": "Гидроцикл BRP Sea-doo Spark 2-UP 900 Ace Vanilla ",
+      "price": "500000 P",
+      "image": "http://localhost:3000/static/media/Moto_13.4562efa606d4559f91cc.png",
+      "id": 12,
+      "type": "spark3",
+      "settings": {
+        "sale": true
+      },
+      "region": "ssha",
+      "speed": 140,
+      "max": 140,
+      "dvigitel": 140,
+      "lich": false,
+      "zakaz":true
+    }
+  ],
   "cardMoto": [
     {
       "name": "Квадроциклы",

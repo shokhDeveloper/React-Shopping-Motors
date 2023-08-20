@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Action } from "../../Settings/Redux/Settings";
 import { NavLink } from "react-router-dom";
 import { Asistent, Btn } from "../../Settings";
+import axios from "axios";
 export const GidroFilterParam = () => {
   const {
     price_filter,
@@ -12,7 +13,13 @@ export const GidroFilterParam = () => {
     dvigitel_display,
     speed_display,
     model_display,
-    filter_asistent
+    filter_asistent,
+    lich, zakaz,
+    speed,
+    dvigitel,
+    max_speed,
+    search, region,
+    type_filter
   } = useSelector((state) => state.Reducer);
   const dispatch = useDispatch();
   const handleChange = (event) => {
@@ -20,6 +27,28 @@ export const GidroFilterParam = () => {
       dispatch(Action.setPrice(event.target.value));
     }
   };
+  const handleSub = async (event) => {
+      event.preventDefault()
+      try{
+        const request = await axios.get(process.env.REACT_APP_SERVER + "/car", {
+          params: {
+            lich: lich ? lich: null,
+            zakaz: zakaz ? zakaz : null,
+            speed: speed ? speed : null,
+            dvigitel: dvigitel ? dvigitel: null,
+            max_speed: max_speed ? max_speed: null,
+            search: search ? search: null,
+            region: region ? region: null,
+            type: type_filter ? type_filter: null
+          }
+        })
+        const response = await request.data
+        dispatch(Action.setFilterCar(response))
+      }catch(error){
+        return error
+      }
+      
+  }
   const handleDalsheGroup = (event) => {
     switch (event.target.id) {
       case "moshnost":
@@ -62,7 +91,7 @@ export const GidroFilterParam = () => {
   }, []);
   return (
     <div className="filter__bar">
-      <form action="https://echo.htmlacademy.ru" method="POST">
+      <form onSubmit={handleSub} >
         <output>
           <UpOutlined />
           <span>
@@ -72,13 +101,15 @@ export const GidroFilterParam = () => {
         </output>
         <div className="filter_bar__checks">
           <label htmlFor="lich">
-            <input type="checkbox" id="lich" name="lich" />
+            <input onChange={(event) => {
+              dispatch(Action.setLich(event.target.checked))
+            }} type="checkbox" id="lich" name="lich" />
             <p>
               <small>В наличие</small>
             </p>
           </label>
           <label htmlFor="zakaz">
-            <input type="checkbox" id="zakaz" />
+            <input onChange={(event) => dispatch(Action.setZakaz(event.target.checked))} type="checkbox" id="zakaz" />
             <p>
               <small>Под заказ</small>
             </p>
@@ -93,7 +124,7 @@ export const GidroFilterParam = () => {
         </output>
         <div className="filter_bar__checks">
           <label htmlFor="all">
-            <input type="checkbox" checked={true} id="all" name="all" />
+            <input type="checkbox"  id="all" name="all" />
             <p>
               <small>Все</small>
             </p>
@@ -150,16 +181,16 @@ export const GidroFilterParam = () => {
             style={{ display: bar_display ? "block" : "none" }}
           >
             <li>
-              <button className="border-transparent">90</button>
+              <button onClick={(event) => dispatch(Action.setSpeedFilter(event.target.textContent-0)) } className="border-transparent">90</button>
             </li>
             <li>
-              <button className="border-transparent">100</button>
+              <button  onClick={(event) => dispatch(Action.setSpeed(event.target.textContent-0)) } className="border-transparent">100</button>
             </li>
             <li>
-              <button className="border-transparent">120</button>
+              <button  onClick={(event) => dispatch(Action.setSpeed(event.target.textContent-0)) } className="border-transparent">120</button>
             </li>
             <li>
-              <button className="border-transparent">140</button>
+              <button  onClick={(event) => dispatch(Action.setSpeed(event.target.textContent-0)) } className="border-transparent">140</button>
             </li>
           </ul>
         </div>
@@ -173,16 +204,16 @@ export const GidroFilterParam = () => {
             style={{ display: dvigitel_display ? "block" : "none" }}
           >
             <li>
-              <button className="border-transparent">90</button>
+              <button onClick={(event) => Action.setDvigitelFilter(event.target.textContent-0)} className="border-transparent">90</button>
             </li>
             <li>
-              <button className="border-transparent">100</button>
+              <button onClick={(event) => Action.setDvigitelFilter(event.target.textContent-0)} className="border-transparent">100</button>
             </li>
             <li>
-              <button className="border-transparent">120</button>
+              <button onClick={(event) => Action.setDvigitelFilter(event.target.textContent-0)} className="border-transparent">120</button>
             </li>
             <li>
-              <button className="border-transparent">140</button>
+              <button onClick={(event) => Action.setDvigitelFilter(event.target.textContent-0)} className="border-transparent">140</button>
             </li>
           </ul>
         </div>
@@ -197,16 +228,16 @@ export const GidroFilterParam = () => {
               style={{ display: speed_display ? "block" : "none" }}
             >
               <li>
-                <button className="border-transparent">90</button>
+                <button onClick={(event) => dispatch(Action.setMaxSpeedFilter(event.target.textContent-0)) } className="border-transparent">90</button>
               </li>
               <li>
-                <button className="border-transparent">100</button>
+                <button onClick={(event) => dispatch(Action.setMaxSpeedFilter(event.target.textContent-0)) } className="border-transparent">100</button>
               </li>
               <li>
-                <button className="border-transparent">120</button>
+                <button onClick={(event) => dispatch(Action.setMaxSpeedFilter(event.target.textContent-0)) } className="border-transparent">120</button>
               </li>
               <li>
-                <button className="border-transparent">140</button>
+                <button onClick={(event) => dispatch(Action.setMaxSpeedFilter(event.target.textContent-0)) } className="border-transparent">140</button>
               </li>
             </ul>
           </p>
@@ -219,17 +250,17 @@ export const GidroFilterParam = () => {
         </output>
         <div className="filter_bar__checks">
           <label htmlFor="BRP">
-            <input type="checkbox" checked id="BRP" name="model" />
+            <input onChange={(event) => dispatch(Action.setTypeFilter(event.target.value))} value={"BRP"} type="checkbox"  id="BRP" name="model" />
             <p> <small>BRP</small> </p>
           </label>
           <label htmlFor="spark">
-            <input type="checkbox" id="spark" checked name="model" />
+            <input onChange={(event) => dispatch(Action.setTypeFilter(event.target.value))} type="checkbox" id="spark" value={"spark"}  name="model" />
             <p> <small>Spark</small> </p>
           </label>
         </div>
         <div className="filter_bar__checks" style={{ marginTop: "1rem" }}>
           <label htmlFor="spark3">
-            <input type="checkbox" checked={false} id="sprark3" name="model" />
+            <input onChange={(event) => dispatch(Action.setTypeFilter(event.target.value))} type="checkbox"  id="sprark3" name="model"  value={"spark3"}/>
             <p> <small>Spark 3</small> </p>
           </label>
         </div>
@@ -239,7 +270,7 @@ export const GidroFilterParam = () => {
               <label htmlFor="gtr">
                 <input
                   type="checkbox"
-                  checked={false}
+                  
                   id="gtr"
                   name="model"
                 />
@@ -281,21 +312,21 @@ export const GidroFilterParam = () => {
         </output>
         <div className="filter_bar__checks">
           <label htmlFor="rossiya">
-            <input type="checkbox" id="rossiya" name="region" />
+            <input onChange={event => dispatch(Action.setRegion(event.target.value))} value={"rossiya"} type="checkbox" id="rossiya" name="region" />
             <p><small>Россия</small></p>
           </label>
         <label htmlFor="germaniya">
-            <input type="checkbox" id="germaniya"  name="region"/>
+            <input onChange={event => dispatch(Action.setRegion(event.target.value))} value={"germaniya"} type="checkbox" id="germaniya"  name="region"/>
             <p><small>Германия</small></p>
           </label>
         </div>
         <div className="filter_bar__checks">
           <label htmlFor="kitay">
-            <input type="checkbox" id="kitay" name="region" />
+            <input onChange={event => dispatch(Action.setRegion(event.target.value))} value={"kitay"} type="checkbox" id="kitay" name="region" />
             <p><small>Китай</small></p>
           </label>
           <label htmlFor="ssha">
-            <input type="checkbox" id="ssha" name="region" />
+            <input onChange={event => dispatch(Action.setRegion(event.target.value))} value={"ssha"} type="checkbox" id="ssha" name="region" />
             <p><small>CША</small></p>
           </label>      
         </div>

@@ -24,7 +24,6 @@ import Jiket from "../assets/images/Jiket.png";
 import Drubin from "../assets/images/Drubin.png";
 import Ip from "../assets/images/Ip.png";
 import { getItem, setItem } from "../Locals";
-import { array } from "yup";
 const initialToken = window.localStorage.getItem("token_auto") || null;
 const initialUser = window.localStorage.getItem("user_auto")
 ? JSON.parse(window.localStorage.getItem("user_auto"))
@@ -122,7 +121,17 @@ let arr = []
     dvigitel_display: false,
     speed_display: false,
     model_display: false,
-    filter_asistent: ""
+    filter_asistent: "",
+    filter_data: [],
+    lich: false,
+    zakaz: false,
+    speed: 0,
+    dvigitel: 0,
+    max_speed: 0,
+    brand: null,
+    search: null,
+    region: null,
+    type_filter: null
   },
 
   reducers: {
@@ -180,16 +189,16 @@ let arr = []
       state.filterCar = obj
     },
     setKorzina(state, action){
-      try{
-        if(arr.length){          
-          arr.push(action.payload)
-          state.korzina = [...new Set(arr)]
+      if(state.korzina.length){
+         if(state.korzina?.some(item => item.id === action.payload.id )){
+          state.korzina = state.korzina
+        } else{
+          state.korzina.push(action.payload)
           setItem("korzina", state.korzina)
-        }else{
-          arr.push(action.payload)
         }
-      }catch(error){
-        state.korzina = error
+      }else{
+        state.korzina.push(action.payload)
+        setItem("korzina", state.korzina)
       }
     },
     setAkkaunt(state, action){
@@ -236,6 +245,33 @@ let arr = []
     },
     setAsistent(state, action){
       state.filter_asistent = action.payload
+    },
+    setFilterCar(state, action){
+      state.filter_data = action.payload
+    },
+    setLich(state, action){
+      state.lich = action.payload
+    },
+    setZakaz(state, action){
+      state.zakaz = action.payload
+    },
+    setSpeedFilter(state, action){
+      state.speed = action.payload
+    },
+    setDvigitelFilter(state, action){
+      state.dvigitel = action.payload
+    },
+    setMaxSpeedFilter(state, action){
+      state.max_speed = action.payload
+    },
+    setSearchFilter(state, action){
+      state.search = action.payload
+    },  
+    setRegion(state, action){
+      state.region = action.payload
+    },
+    setTypeFilter(state, action){
+      state.type_filter = action.payload
     }
   },
 });

@@ -30,6 +30,7 @@
     display: grid;
     grid-template: repeat(1, auto ) / 20% 80%;
     margin-top: 1rem;
+    align-items: flex-start;
 }
 .gidro_filter__bar{
     padding: 0rem 1rem 0rem 0rem;
@@ -150,5 +151,65 @@
 }
 .filter__bar .submitter button{
     flex-grow: 1;
-    
+
+}
+.gidro_filter__tovars{
+    display: grid;
+    grid-template: repeat(1, auto) / repeat(3, 1fr);
+}
+.gidro_filter__tovars .gidro__tovar {
+    width: 100%;
+    border: 1px solid #CDCDCD;
+}
+.gidro__tovar .gidro_tovar__header{
+    position: relative;
+    padding: 0.5rem;
+}
+.gidro__tovar .gidro_tovar__header .like{
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+
+}
+.gidro__tovar{
+    text-align: center;
+    transition: 0.5s ease all;
+}
+.gidro__tovar .gidro_tovar__body{
+    position: relative;
+    padding: 1rem;
+}
+.gidro__tovar .gidro_tovar__body h3{
+    font-size: 18px;
+    font-weight: 400;
+    margin-bottom: 1rem;  
+}
+.gidro_tovar__footer{
+    position: relative;
+    margin-top: 1rem;
+}
+.gidro_tovar__shop{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    background: #FFFFFF;
+    color: #2F3035;
+    width: 100%;
+    padding: 1rem ;
+    opacity: 0;
+    transition: 0.5s ease all;
+}
+.gidro_tovar__shop a{
+    text-decoration: none;
+    color: #2F3035;
+}
+.gidro__tovar:hover .gidro_tovar__shop{
+    transform: translate(-50%, -100%);
+    opacity: 1;
+}
+.gidro__tovar .gidro_tovar__body h3:nth-child(3){
+    font-weight: 700;
+    font-size: 30px;
+
 }
